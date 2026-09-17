@@ -1,9 +1,13 @@
 // SKILL PULSE — Frontend API Helper
 // Centralizes base URL, request handling, and error logging without fake data.
 // Priority: window.API_BASE_URL from config.js (production) → fallback localhost (local dev).
-// For deployment: edit frontend/config.js to set window.API_BASE_URL = "https://YOUR-BACKEND.onrender.com"
+// For deployment: set window.API_BASE_URL = "" in config.js for same-origin /api/* calls.
+// If window.API_BASE_URL is empty, uses "/api" as base for same-origin calls.
+// If window.API_BASE_URL is set to a URL, uses that URL as the base.
 
-const API_BASE_URL = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : "http://127.0.0.1:8000";
+const API_BASE_URL = typeof window.API_BASE_URL !== 'undefined' && window.API_BASE_URL !== ""
+    ? window.API_BASE_URL
+    : "/api";
 
 /**
  * Generic POST helper with JSON.

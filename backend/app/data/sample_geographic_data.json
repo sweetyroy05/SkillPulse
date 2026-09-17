@@ -1,0 +1,31 @@
+{
+  "regions": {
+    "Shillong": {
+      "state": "Meghalaya",
+      "economic_focus": ["Tourism", "Information Technology", "Urban Planning & Geospatial", "Agriculture Logistics"],
+      "skill_supply_index": "Moderate",
+      "skill_demand_index": "High",
+      "high_demand_skills": ["GIS", "Data Analysis", "Python", "Project Management", "Technical Drawing"],
+      "demand_gaps": ["GIS Specialist", "Data Analyst", "Survey Officer"],
+      "growth_sectors": ["Smart City Initiatives", "Digital Services", "Environmental Monitoring"]
+    },
+    "Guwahati": {
+      "state": "Assam",
+      "economic_focus": ["Logistics", "Commerce", "IT Services", "Civil Infrastructure"],
+      "skill_supply_index": "High",
+      "skill_demand_index": "High",
+      "high_demand_skills": ["Python", "SQL", "AutoCAD", "Project Management", "Data Analysis"],
+      "demand_gaps": ["Full Stack Developer", "CAD Engineer"],
+      "growth_sectors": ["Transportation & Hub Logistics", "IT Hub Development"]
+    },
+    "Default": {
+      "state": "National / General",
+      "economic_focus": ["Digital Technology", "Services", "Engineering"],
+      "skill_supply_index": "Moderate",
+      "skill_demand_index": "Moderate",
+      "high_demand_skills": ["Python", "SQL", "Excel", "Data Analysis", "Project Management"],
+      "demand_gaps": ["Data Analyst", "Software Engineer"],
+      "growth_sectors": ["Digital Economy", "Automated Workflows"]
+    }
+  }
+}

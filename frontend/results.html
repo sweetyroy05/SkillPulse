@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Intelligence Report - Skill Pulse</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f9;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #061936;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #20385c;
+        }
+
+        header h1 {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #dbe8f8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #159cf0;
+        }
+
+        /* MAIN */
+
+        .page {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            font-size: 40px;
+            color: #0b1f3a;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #5d6b7d;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dfe7f0;
+        }
+
+        .section h3 {
+            color: #0b1f3a;
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+        /* PROFILE */
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .profile-item {
+            background: #f5f8fc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #159cf0;
+        }
+
+        .profile-item strong {
+            display: block;
+            color: #0b1f3a;
+            margin-bottom: 8px;
+        }
+
+        .profile-item span {
+            color: #566579;
+        }
+
+        /* SCORE */
+
+        .score-box {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #f5f8fc;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .score {
+            font-size: 58px;
+            font-weight: bold;
+            color: #159cf0;
+        }
+
+        .score small {
+            font-size: 22px;
+            color: #718096;
+        }
+
+        .score-info h4 {
+            color: #0b1f3a;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .score-info p {
+            color: #5d6b7d;
+            line-height: 1.6;
+        }
+
+        /* SKILLS */
+
+        .skill-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .skill {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 17px 20px;
+            background: #f5f8fc;
+            border-radius: 10px;
+            border-left: 5px solid #159cf0;
+        }
+
+        .skill strong {
+            color: #0b1f3a;
+        }
+
+        .skill span {
+            color: #159cf0;
+            font-weight: bold;
+        }
+
+        /* RECOMMENDATIONS */
+
+        .recommendation {
+            background: linear-gradient(135deg, #eef8ff, #f7fbff);
+            border-left: 6px solid #159cf0;
+        }
+
+        .recommendation p {
+            color: #4d5d70;
+            line-height: 1.7;
+        }
+
+        /* CAREER */
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .career {
+            background: #f5f8fc;
+            padding: 25px;
+            border-radius: 13px;
+            border-top: 4px solid #159cf0;
+        }
+
+        .career h4 {
+            color: #0b1f3a;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .career p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* MODULE BUTTONS */
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .actions a {
+            background: #0b1f3a;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .actions a:hover {
+            background: #159cf0;
+            transform: translateY(-2px);
+        }
+
+        /* NOTE */
+
+        .prototype {
+            text-align: center;
+            max-width: 800px;
+            margin: 30px auto;
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 60px;
+            background: #061936;
+            color: #b8c7da;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+                gap: 18px;
+                text-align: center;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            .page-header h2 {
+                font-size: 31px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .score-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions a {
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">Home</a>
+
+            <a href="skill-gap.html">Skill Gap</a>
+
+            <a href="training-impact.html">
+                Training Impact
+            </a>
+
+            <a href="geographic.html">
+                Geographic Intelligence
+            </a>
+
+            <a href="simulator.html">
+                Simulator
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="page">
+
+        <div class="page-header">
+
+            <h2>Skill Intelligence Report</h2>
+
+            <p>
+                A combined view of your profile, skills,
+                market alignment and recommended development areas.
+            </p>
+
+        </div>
+
+
+        <!-- PROFILE SUMMARY -->
+
+        <section class="section">
+
+            <h3>Profile Summary</h3>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <strong>Location</strong>
+
+                    <span id="resultLocation">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Qualification</strong>
+
+                    <span id="resultQualification">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Profession / Course</strong>
+
+                    <span id="resultProfession">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Skills / Training</strong>
+
+                    <span id="resultSkills">
+                        Loading...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILL MATCH -->
+
+        <section class="section">
+
+            <h3>Overall Skill Match <span id="resultTargetRole" style="font-size:14px; color:#5d6b7d; font-weight:normal;"></span></h3>
+
+            <div id="resultsLoading" style="display:none; text-align:center; padding:10px; color:#159cf0; font-weight:bold;">Loading aggregated results...</div>
+            <div id="resultsError" style="display:none; margin-bottom:12px; padding:12px 14px; background:#fff1f2; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:13px;"></div>
+
+            <div class="score-box">
+
+                <div class="score" id="resultScore">
+                    --<small>/100</small>
+                </div>
+
+                <div class="score-info">
+
+                    <h4 id="resultAlignmentLevel">Loading...</h4>
+
+                    <p id="resultAlignmentSummary">
+                        Loading skill intelligence...
+                    </p>
+                    <p id="resultScoringDetail" style="margin-top:8px; font-size:12px; color:#718096;"></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS IDENTIFIED -->
+
+        <section class="section">
+
+            <h3>Skills Identified <span id="resultSkillsCount" style="font-size:13px; color:#718096; font-weight:normal;"></span></h3>
+
+            <div class="skill-list" id="resultSkillsList">
+
+                <div class="skill"><strong>Loading...</strong><span>—</span></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILL DEVELOPMENT -->
+
+        <section class="section">
+
+            <h3>Recommended Skill Development <span id="resultGapsCount" style="font-size:13px; color:#718096; font-weight:normal;"></span></h3>
+
+            <div class="skill-list" id="resultGapsList">
+
+                <div class="skill"><strong>Loading...</strong><span>—</span></div>
+
+            </div>
+            <div id="resultTrainingPrograms" style="margin-top:18px;"></div>
+            <div id="resultTrainingSection" class="skill-list" style="margin-top:10px;"></div>
+
+        </section>
+
+
+        <!-- CAREER OPPORTUNITIES -->
+
+        <section class="section">
+
+            <h3>Potential Career Opportunities</h3>
+
+            <div class="career-grid" id="resultCareersGrid">
+
+                <div class="career"><h4>Loading...</h4><p>Fetching career intelligence...</p></div>
+
+            </div>
+            <div id="resultGeoExtra" style="margin-top:16px; font-size:13px; color:#5d6b7d;"></div>
+
+        </section>
+
+        <!-- ADDITIONAL INTELLIGENCE: Geographic & Simulator -->
+        <section class="section" id="resultGeoSimSection" style="display:none;">
+            <h3>Geographic & Policy Insights</h3>
+            <div id="resultGeoSimContent" style="display:grid; gap:12px;"></div>
+        </section>
+
+
+        <!-- RECOMMENDATION -->
+
+        <section class="section recommendation">
+
+            <h3>Skill Pulse Recommendation</h3>
+
+            <p id="resultRecommendation">
+                Loading recommendation...
+            </p>
+            <p id="resultRecommendationExtra" style="margin-top:10px; font-size:13px; color:#4d5d70;"></p>
+            <p style="margin-top:10px; font-size:12px; color:#718096;" id="resultMetadata"></p>
+
+        </section>
+
+
+        <!-- NEXT MODULES -->
+
+        <section class="section">
+
+            <h3>Explore More Skill Intelligence</h3>
+
+            <div class="actions">
+
+                <a href="skill-gap.html">
+                    Skill Gap Radar →
+                </a>
+
+                <a href="geographic.html">
+                    Geographic Intelligence →
+                </a>
+
+                <a href="training-impact.html">
+                    Training Impact →
+                </a>
+
+                <a href="simulator.html">
+                    What-If Simulator →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <p class="prototype">
+
+            Prototype / Demo:
+            The current report uses demonstration values.
+            In the final Skill Pulse system, these results
+            can be generated from backend datasets,
+            calculations and intelligence models.
+
+        </p>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Skill Pulse — AI-Powered Skill Intelligence
+        </p>
+
+    </footer>
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <!-- JAVASCRIPT -->
+
+    <script>
+        const resLocationVal = localStorage.getItem("skillPulseLocation");
+        const resQualificationVal = localStorage.getItem("skillPulseQualification");
+        const resProfessionVal = localStorage.getItem("skillPulseProfession");
+        const resSkillsVal = localStorage.getItem("skillPulseSkills");
+
+        document.getElementById("resultLocation").textContent = resLocationVal || "Not provided";
+        document.getElementById("resultQualification").textContent = resQualificationVal || "Not provided";
+        document.getElementById("resultProfession").textContent = resProfessionVal || "Not provided";
+        document.getElementById("resultSkills").textContent = resSkillsVal || "Not provided";
+
+        (function renderResults() {
+            const loadingEl = document.getElementById("resultsLoading");
+            const errorEl = document.getElementById("resultsError");
+            if (loadingEl) loadingEl.style.display = "block";
+
+            let profileData = null, gapData = null, trainingData = null, geoData = null, simData = null;
+            try { profileData = JSON.parse(localStorage.getItem("skillPulseProfileResult") || "null"); } catch(_) {}
+            try { gapData = JSON.parse(localStorage.getItem("skillPulseSkillGapResult") || "null"); } catch(_) {}
+            try { trainingData = JSON.parse(localStorage.getItem("skillPulseTrainingResult") || "null"); } catch(_) {}
+            try { geoData = JSON.parse(localStorage.getItem("skillPulseGeographicResult") || "null"); } catch(_) {}
+            try { simData = JSON.parse(localStorage.getItem("skillPulseSimulatorResult") || "null"); } catch(_) {}
+
+            // Overall skill match — prefer gapData, fallback to training/profile
+            const scoreEl = document.getElementById("resultScore");
+            const levelEl = document.getElementById("resultAlignmentLevel");
+            const summaryEl = document.getElementById("resultAlignmentSummary");
+            const detailEl = document.getElementById("resultScoringDetail");
+            const targetEl = document.getElementById("resultTargetRole");
+
+            if (gapData) {
+                if (scoreEl) scoreEl.innerHTML = `${gapData.alignment_score}<small>/100</small>`;
+                if (levelEl) levelEl.textContent = gapData.alignment_level;
+                if (summaryEl) summaryEl.textContent = gapData.summary;
+                if (targetEl) targetEl.textContent = `· ${gapData.target_role} (${gapData.target_role_id})`;
+                if (detailEl && gapData.scoring_breakdown) {
+                    const b = gapData.scoring_breakdown;
+                    detailEl.textContent = `Core: ${b.matched_core_count}/${b.total_core_count} (${b.core_coverage_pct}%) | Secondary: ${b.matched_sec_count}/${b.total_sec_count} (${b.secondary_coverage_pct}%) | ${b.formula}`;
+                }
+                console.log("Results: using gapData", gapData);
+            } else if (trainingData) {
+                if (scoreEl) scoreEl.innerHTML = `${trainingData.current_skill_alignment}<small>/100</small>`;
+                if (levelEl) levelEl.textContent = `Current Alignment — Training Relevance: ${trainingData.training_relevance}`;
+                if (summaryEl) summaryEl.textContent = trainingData.explanation;
+                if (targetEl) targetEl.textContent = `· ${trainingData.target_role}`;
+            } else if (profileData && profileData.target_roles && profileData.target_roles[0]) {
+                const top = profileData.target_roles[0];
+                if (scoreEl) scoreEl.innerHTML = `${top.relevance_score}<small>/100</small>`;
+                if (levelEl) levelEl.textContent = top.title;
+                if (summaryEl) summaryEl.textContent = top.explanation;
+                if (targetEl) targetEl.textContent = `· ${top.title}`;
+            } else {
+                if (scoreEl) scoreEl.innerHTML = `--<small>/100</small>`;
+                if (levelEl) levelEl.textContent = "No analysis yet";
+                if (summaryEl) summaryEl.textContent = "Please complete Profile Analyzer and Skill Gap analysis to see your personalized score. The backend results will appear here automatically.";
+                if (errorEl) { errorEl.textContent = "No backend results found in localStorage. Complete the journey: Profile → Skill Gap → Training → Geographic → Simulator."; errorEl.style.display = "block"; }
+            }
+
+            // Skills Identified
+            const skillsListEl = document.getElementById("resultSkillsList");
+            const skillsCountEl = document.getElementById("resultSkillsCount");
+            if (skillsListEl) {
+                skillsListEl.innerHTML = "";
+                let items = [];
+                let source = "";
+                if (gapData && gapData.matched_skills) { items = gapData.matched_skills; source = "matched"; }
+                else if (profileData && profileData.normalized_skills) { items = profileData.normalized_skills.map(s=> ({ skill: s.canonical_name, category: s.category, priority: s.is_recognized ? "Recognized" : "Emerging", type: s.category })); source = "profile"; }
+                else if (gapData && gapData.existing_skills) { items = gapData.existing_skills.map(s=> ({skill:s, priority:"Relevant"})); }
+
+                if (items.length) {
+                    if (skillsCountEl) skillsCountEl.textContent = `(${items.length})`;
+                    items.forEach(it => {
+                        const div = document.createElement("div");
+                        div.className = "skill";
+                        const name = it.skill || it.canonical_name || it;
+                        const prio = it.priority || it.type || "Relevant";
+                        const cat = it.category ? ` · ${it.category}` : "";
+                        div.innerHTML = `<strong>${name}<span style="font-weight:normal; color:#718096; font-size:12px;">${cat}</span></strong><span>${prio}</span>`;
+                        skillsListEl.appendChild(div);
+                    });
+                } else {
+                    if (skillsCountEl) skillsCountEl.textContent = "(0)";
+                    skillsListEl.innerHTML = `<div class="skill"><strong>No skills yet</strong><span>—</span></div>`;
+                }
+            }
+
+            // Recommended gaps
+            const gapsListEl = document.getElementById("resultGapsList");
+            const gapsCountEl = document.getElementById("resultGapsCount");
+            const trainingProgContainer = document.getElementById("resultTrainingPrograms");
+            if (gapsListEl) {
+                gapsListEl.innerHTML = "";
+                let gaps = [];
+                if (gapData && gapData.skill_gaps) gaps = gapData.skill_gaps;
+                else if (trainingData && trainingData.recommended_skills) gaps = trainingData.recommended_skills.map(s=> ({skill:s.skill, priority:s.priority, category:s.category, type:s.category}));
+                if (gaps.length) {
+                    if (gapsCountEl) gapsCountEl.textContent = `(${gaps.length})`;
+                    gaps.forEach(g => {
+                        const div = document.createElement("div");
+                        div.className = "skill";
+                        const col = (g.priority && g.priority.includes("High")) ? "#e11d48" : "#159cf0";
+                        div.innerHTML = `<strong>${g.skill} <span style="font-weight:normal; color:#718096; font-size:12px;">${g.category? '· '+g.category:''} ${g.type? '· '+g.type:''}</span></strong><span style="color:${col}">${g.priority}</span>`;
+                        gapsListEl.appendChild(div);
+                    });
+                } else {
+                    if (gapsCountEl) gapsCountEl.textContent = "(0)";
+                    gapsListEl.innerHTML = `<div class="skill"><strong>All key gaps covered — excellent alignment!</strong><span style="color:#059669">Complete</span></div>`;
+                }
+            }
+            // Recommended training programs (from trainingData)
+            if (trainingProgContainer) {
+                trainingProgContainer.innerHTML = "";
+                if (trainingData && trainingData.recommended_training && trainingData.recommended_training.length) {
+                    const h = document.createElement("h4");
+                    h.textContent = "Recommended Training Programs";
+                    h.style.cssText = "margin:14px 0 8px; color:#0b1f3a; font-size:16px;";
+                    trainingProgContainer.appendChild(h);
+                    const list = document.createElement("div");
+                    list.className = "skill-list";
+                    trainingData.recommended_training.forEach(t => {
+                        const div = document.createElement("div");
+                        div.className = "skill";
+                        const col = t.priority.includes("High") ? "#e11d48" : "#159cf0";
+                        div.innerHTML = `<div><strong>${t.title}</strong><div style="font-size:12px; color:#718096; margin-top:4px;">${t.provider} · ${t.duration_weeks}w · ${t.mode} · ${t.skills_addressed.join(", ")} · <span style="color:#059669">+${t.projected_score_boost}</span></div></div><span style="color:${col}">${t.priority}</span>`;
+                        list.appendChild(div);
+                    });
+                    trainingProgContainer.appendChild(list);
+                    // projected alignment note
+                    const proj = document.createElement("p");
+                    proj.style.cssText = "margin-top:10px; font-size:13px; color:#059669; font-weight:bold;";
+                    proj.textContent = `Projected alignment after top training: ${trainingData.projected_skill_alignment}/100 (was ${trainingData.current_skill_alignment}) — Relevance: ${trainingData.training_relevance} · Employment: ${trainingData.employment_alignment}`;
+                    trainingProgContainer.appendChild(proj);
+                }
+            }
+
+            // Careers
+            const careersGrid = document.getElementById("resultCareersGrid");
+            const geoExtra = document.getElementById("resultGeoExtra");
+            if (careersGrid) {
+                careersGrid.innerHTML = "";
+                let careers = [];
+                if (profileData && profileData.target_roles) careers = profileData.target_roles.slice(0,3);
+                else if (geoData && geoData.relevant_occupations) careers = geoData.relevant_occupations.slice(0,3).map(t=> ({title:t, description: "Relevant in " + geoData.location, relevance_score: geoData.opportunity_index}));
+                else if (gapData) careers = [{title: gapData.target_role, description: gapData.summary, relevance_score: gapData.alignment_score}];
+
+                if (careers.length) {
+                    careers.forEach(c => {
+                        const div = document.createElement("div");
+                        div.className = "career";
+                        const title = c.title || c.role_or_title || "Opportunity";
+                        const desc = c.description || c.explanation || "Aligned with your profile.";
+                        const score = c.relevance_score ? `Score: ${c.relevance_score}/100` : "";
+                        div.innerHTML = `<h4>${title}</h4><p>${desc}</p>${score ? `<p style="margin-top:8px; font-size:12px; color:#159cf0; font-weight:bold;">${score}</p>` : ""}`;
+                        careersGrid.appendChild(div);
+                    });
+                } else {
+                    careersGrid.innerHTML = `<div class="career"><h4>No career data yet</h4><p>Complete profile analysis to see recommendations.</p></div>`;
+                }
+                if (geoData && geoExtra) {
+                    geoExtra.innerHTML = `<strong>Geographic:</strong> ${geoData.location} (${geoData.state}) — Opportunity ${geoData.opportunity_index}/100 · Supply ${geoData.skill_supply} / Demand ${geoData.skill_demand} · Focus: ${geoData.economic_focus.join(", ")}`;
+                }
+            }
+
+            // Geographic & Simulator extra section
+            const extraSection = document.getElementById("resultGeoSimSection");
+            const extraContent = document.getElementById("resultGeoSimContent");
+            let hasExtra = false;
+            if (extraContent) extraContent.innerHTML = "";
+            if (geoData && extraContent) {
+                hasExtra = true;
+                const geoDiv = document.createElement("div");
+                geoDiv.style.cssText = "background:#f5f8fc; padding:16px; border-radius:10px; border-left:4px solid #7c5cff;";
+                geoDiv.innerHTML = `<strong style="color:#0b1f3a;">📍 Geographic Intelligence — ${geoData.location}</strong><p style="margin:8px 0 0; color:#5d6b7d; line-height:1.5; font-size:13px;">${geoData.explanation}</p><p style="margin:8px 0 0; font-size:12px; color:#718096;">High-demand: ${geoData.high_demand_skills.map(h=> h.skill + (h.user_has_skill? ' ✓':'')).join(", ")} | Growth: ${geoData.growth_sectors.join(", ")}</p>`;
+                extraContent.appendChild(geoDiv);
+            }
+            if (simData && extraContent) {
+                hasExtra = true;
+                const simDiv = document.createElement("div");
+                simDiv.style.cssText = "background:#fffbeb; padding:16px; border-radius:10px; border-left:4px solid #f59e0b;";
+                simDiv.innerHTML = `<strong style="color:#0b1f3a;">🔮 What-If Simulation — ${simData.target_skill} × ${simData.scenario.workforce_coverage}</strong><p style="margin:8px 0 0; color:#5d6b7d; line-height:1.5; font-size:13px;">${simData.explanation}</p><p style="margin:8px 0 0; font-size:12px; color:#059669; font-weight:bold;">Baseline ${simData.baseline.alignment_score} → Scenario ${simData.scenario.alignment_score} (Δ +${simData.delta.alignment_delta}) · Coverage ${simData.baseline.workforce_coverage} → ${simData.scenario.workforce_coverage} (Δ +${simData.delta.coverage_delta}) · Unmet Δ ${simData.delta.unmet_demand_delta}</p>`;
+                extraContent.appendChild(simDiv);
+            }
+            if (hasExtra && extraSection) extraSection.style.display = "block";
+
+            // Recommendation
+            const recEl = document.getElementById("resultRecommendation");
+            const recExtra = document.getElementById("resultRecommendationExtra");
+            const metaEl = document.getElementById("resultMetadata");
+            if (recEl) {
+                if (trainingData && trainingData.explanation) recEl.textContent = trainingData.explanation;
+                else if (gapData && gapData.summary) recEl.textContent = gapData.summary + " These results are decision-support information and do not guarantee employment.";
+                else if (geoData && geoData.explanation) recEl.textContent = geoData.explanation;
+                else if (simData && simData.explanation) recEl.textContent = simData.explanation;
+                else recEl.textContent = "Complete the full Skill Pulse journey to receive personalized, backend-driven recommendations.";
+            }
+            if (recExtra) {
+                let txt = "";
+                if (trainingData) txt += `Training Relevance: ${trainingData.training_relevance} · Employment Alignment: ${trainingData.employment_alignment}. `;
+                if (geoData) txt += `Geographic Opportunity Index: ${geoData.opportunity_index}/100 (${geoData.skill_demand} demand, ${geoData.skill_supply} supply). `;
+                if (simData) txt += `Simulation shows that training ${simData.target_skill} could improve coverage by +${simData.delta.coverage_delta}.`;
+                recExtra.textContent = txt;
+            }
+            if (metaEl) {
+                const parts = [];
+                if (gapData?.metadata) parts.push(`Gap engine: ${gapData.metadata.engine_mode || gapData.metadata.scoring_model}`);
+                if (trainingData?.metadata) parts.push(`Training: ${trainingData.metadata.model}`);
+                if (geoData?.metadata) parts.push(`Geo: ${geoData.metadata.data_source}`);
+                if (simData?.metadata) parts.push(`Simulator: ${simData.metadata.model}`);
+                metaEl.textContent = parts.join(" · ") || "Prototype baseline — rule-based deterministic analysis (no ML claims).";
+            }
+
+            if (loadingEl) loadingEl.style.display = "none";
+        })();
+    </script>
+
+</body>
+
+</html>

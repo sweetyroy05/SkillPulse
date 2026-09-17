@@ -1,0 +1,76 @@
+{
+  "skills": [
+    {
+      "name": "Python",
+      "category": "Software & Data Science",
+      "aliases": ["python3", "python programming", "py"],
+      "demand_weight": 0.85
+    },
+    {
+      "name": "SQL",
+      "category": "Data & Databases",
+      "aliases": ["mysql", "postgresql", "structured query language", "database"],
+      "demand_weight": 0.80
+    },
+    {
+      "name": "AutoCAD",
+      "category": "Engineering & Design",
+      "aliases": ["cad", "autodesk autocad", "2d drafting"],
+      "demand_weight": 0.75
+    },
+    {
+      "name": "GIS",
+      "category": "Geospatial & Surveying",
+      "aliases": ["geographic information systems", "qgis", "arcgis", "remote sensing"],
+      "demand_weight": 0.90
+    },
+    {
+      "name": "Surveying",
+      "category": "Engineering & Design",
+      "aliases": ["land surveying", "total station", "topography"],
+      "demand_weight": 0.70
+    },
+    {
+      "name": "Technical Drawing",
+      "category": "Engineering & Design",
+      "aliases": ["drafting", "engineering drawing", "blueprints"],
+      "demand_weight": 0.65
+    },
+    {
+      "name": "Excel",
+      "category": "Business & Analytics",
+      "aliases": ["ms excel", "spreadsheets", "advanced excel"],
+      "demand_weight": 0.70
+    },
+    {
+      "name": "Machine Learning",
+      "category": "Software & Data Science",
+      "aliases": ["ml", "deep learning", "ai", "artificial intelligence"],
+      "demand_weight": 0.95
+    },
+    {
+      "name": "Data Analysis",
+      "category": "Business & Analytics",
+      "aliases": ["data analytics", "bi", "data visualization"],
+      "demand_weight": 0.85
+    },
+    {
+      "name": "Project Management",
+      "category": "Management & Operations",
+      "aliases": ["pm", "agile", "scrum", "project coordination"],
+      "demand_weight": 0.75
+    },
+    {
+      "name": "Web Development",
+      "category": "Software & Data Science",
+      "aliases": ["html", "css", "javascript", "react", "frontend development"],
+      "demand_weight": 0.80
+    },
+    {
+      "name": "Cloud Computing",
+      "category": "Software & Data Science",
+      "aliases": ["aws", "azure", "gcp", "cloud infrastructure"],
+      "demand_weight": 0.85
+    }
+  ]
+}

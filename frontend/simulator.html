@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What-If Policy Simulator - SKILL PULSE</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">Home</a>
+
+            <a href="skill-gap.html">Skill Gap</a>
+
+            <a href="training-impact.html">Training Impact</a>
+
+            <a href="geographic.html">Geographic Intelligence</a>
+
+            <a href="simulator.html">Simulator</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="analyzer-page">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="analyzer-header">
+
+            <h2>What-If Policy Simulator</h2>
+
+            <p>
+                Simulate how additional training could change
+                skill supply and employment alignment.
+            </p>
+
+        </div>
+
+
+
+        <!-- USER PROFILE -->
+
+        <section class="analyzer-section">
+
+            <h3>👤 Selected Profile</h3>
+
+            <p>
+                The simulator uses the profile information
+                entered in Skill Pulse.
+            </p>
+
+
+            <div class="profile-grid">
+
+                <div>
+
+                    <strong>📍 Location</strong>
+
+                    <p id="simLocation">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🎓 Qualification</strong>
+
+                    <p id="simQualification">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>💼 Profession / Course</strong>
+
+                    <p id="simProfession">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🛠️ Skills / Training</strong>
+
+                    <p id="simSkills">
+                        Not provided
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- POLICY INPUT -->
+
+        <section class="analyzer-section">
+
+            <h3>⚙️ Create a What-If Scenario</h3>
+
+            <p>
+                Enter the number of additional people who
+                would receive training.
+            </p>
+
+
+            <label for="trainingSkill">
+                🎯 Skill / Training
+            </label>
+
+            <input
+                type="text"
+                id="trainingSkill"
+                placeholder="Example: GIS"
+            >
+
+
+            <label for="trainingPeople">
+                👥 Additional People to Train
+            </label>
+
+            <input
+                type="number"
+                id="trainingPeople"
+                placeholder="Example: 10000"
+                min="1"
+            >
+
+
+            <button
+                class="analyze-button"
+                id="simRunBtn"
+                onclick="runSimulation()"
+            >
+                Run Simulation →
+            </button>
+            <div id="simLoading" style="display:none; margin-top:12px; text-align:center; color:#159cf0; font-weight:bold;">Running simulation...</div>
+            <div id="simError" style="display:none; margin-top:14px; padding:14px 16px; background:#fff1f2; border:1px solid #fecdd3; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:14px; line-height:1.5;"></div>
+
+        </section>
+
+
+
+        <!-- SIMULATION RESULT -->
+
+        <section
+            class="analyzer-section"
+            id="simulationResult"
+            style="display: none;"
+        >
+
+            <h3>📊 Simulation Result <span id="simTargetRole" style="font-size:13px; color:#5d6b7d; font-weight:normal;"></span></h3>
+
+            <div class="demand-box" id="simBaselineBox">
+                <div>
+                    <strong>Baseline Alignment</strong>
+                    <p id="simBaselineAlignment">—</p>
+                    <div style="font-size:12px; color:#718096;" id="simBaselineAlignmentDetail"></div>
+                </div>
+                <div>
+                    <strong>Baseline Coverage</strong>
+                    <p id="simBaselineCoverage">—</p>
+                    <div style="font-size:12px; color:#718096;" id="simBaselineCoverageDetail"></div>
+                </div>
+                <div>
+                    <strong>Baseline Opportunity</strong>
+                    <p id="simBaselineOpportunity">—</p>
+                </div>
+            </div>
+
+            <div class="demand-box" id="simScenarioBox" style="margin-top:14px;">
+                <div>
+                    <strong>Scenario Alignment</strong>
+                    <p id="simScenarioAlignment">—</p>
+                    <div style="font-size:12px; color:#059669;" id="simScenarioAlignmentDelta"></div>
+                </div>
+                <div>
+                    <strong>Scenario Coverage</strong>
+                    <p id="simScenarioCoverage">—</p>
+                    <div style="font-size:12px; color:#059669;" id="simScenarioCoverageDelta"></div>
+                </div>
+                <div>
+                    <strong>Scenario Opportunity</strong>
+                    <p id="simScenarioOpportunity">—</p>
+                    <div style="font-size:12px; color:#059669;" id="simScenarioOpportunityDelta"></div>
+                </div>
+            </div>
+
+            <div class="demand-box" style="margin-top:14px;">
+
+                <div>
+
+                    <strong>Additional Trainees</strong>
+
+                    <p id="resultPeople">
+                        0
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Skill</strong>
+
+                    <p id="resultSkill">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Unmet Demand Change</strong>
+
+                    <p id="resultImpact">
+                        -
+                    </p>
+                    <div style="font-size:12px; color:#718096;" id="resultImpactDetail"></div>
+
+                </div>
+
+            </div>
+
+            <div class="demand-box" style="margin-top:14px; background:#f0fdf4; border:1px solid #bbf7d0;">
+                <div>
+                    <strong>Workforce Δ</strong>
+                    <p id="simCoverageDelta">—</p>
+                </div>
+                <div>
+                    <strong>Alignment Δ</strong>
+                    <p id="simAlignmentDelta">—</p>
+                </div>
+                <div>
+                    <strong>Opportunity Δ</strong>
+                    <p id="simOpportunityDelta">—</p>
+                </div>
+            </div>
+
+            <div class="recommendation-card">
+
+                <h3>💡 Skill Pulse Insight</h3>
+
+                <p id="simulationMessage">
+                    -
+                </p>
+                <p id="simMetadata" style="margin-top:10px; font-size:12px; color:#718096;"></p>
+
+            </div>
+
+            <div style="margin-top:16px; text-align:center;">
+                <a href="results.html" style="display:inline-block; padding:12px 22px; background:#0b1f3a; color:white; border-radius:25px; text-decoration:none; font-weight:bold;">View Full Results →</a>
+            </div>
+
+        </section>
+
+
+
+        <!-- MODULE CONNECTIONS -->
+
+        <section class="analyzer-section">
+
+            <h3>🚀 Continue Your Analysis</h3>
+
+
+            <div class="next-actions">
+
+                <a href="skill-gap.html">
+                    ← Skill Gap Radar
+                </a>
+
+
+                <a href="training-impact.html">
+                    ← Training Impact
+                </a>
+
+
+                <a href="geographic.html">
+                    Geographic Intelligence
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROTOTYPE NOTE -->
+
+        <p class="prototype-note">
+
+            Prototype / Demo Simulation:
+            Results are illustrative and will be replaced by
+            backend calculations using verified skill-demand,
+            training and employment datasets. Simulation results
+            are decision-support information and do not guarantee
+            employment outcomes.
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            SKILL PULSE © 2026
+        </p>
+
+    </footer>
+
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* GET USER DATA */
+        const simLocationVal = localStorage.getItem("skillPulseLocation");
+        const simQualificationVal = localStorage.getItem("skillPulseQualification");
+        const simProfessionVal = localStorage.getItem("skillPulseProfession");
+        const simSkillsVal = localStorage.getItem("skillPulseSkills");
+
+        /* DISPLAY USER DATA */
+        document.getElementById("simLocation").textContent = simLocationVal || "Not provided";
+        document.getElementById("simQualification").textContent = simQualificationVal || "Not provided";
+        document.getElementById("simProfession").textContent = simProfessionVal || "Not provided";
+        document.getElementById("simSkills").textContent = simSkillsVal || "Not provided";
+
+        /* RUN SIMULATION — backend integrated */
+        async function runSimulation() {
+            const trainingSkill = document.getElementById("trainingSkill").value.trim();
+            const trainingPeopleRaw = document.getElementById("trainingPeople").value.trim();
+            const trainingPeople = Number(trainingPeopleRaw);
+            const errorEl = document.getElementById("simError");
+            const loadingEl = document.getElementById("simLoading");
+            const btn = document.getElementById("simRunBtn");
+            if (errorEl) { errorEl.style.display = "none"; errorEl.textContent = ""; }
+
+            if (!trainingSkill) {
+                alert("Please enter a skill or training area.");
+                return;
+            }
+            if (!trainingPeople || trainingPeople <= 0 || !Number.isInteger(trainingPeople)) {
+                alert("Please enter a valid integer number of people (≥1).");
+                return;
+            }
+            if (trainingPeople > 1000000) {
+                alert("Please enter ≤1,000,000 trainees.");
+                return;
+            }
+            if (!simLocationVal || !simProfessionVal || !simSkillsVal) {
+                const msg = "Profile data missing. Please complete Profile Analyzer first.";
+                if (errorEl) { errorEl.textContent = msg; errorEl.style.display = "block"; }
+                alert(msg);
+                return;
+            }
+
+            if (loadingEl) loadingEl.style.display = "block";
+            if (btn) { btn.disabled = true; btn.style.opacity = "0.7"; btn.textContent = "Running..."; }
+
+            // try to infer target_role from previous results
+            let targetRoleHint = null;
+            try {
+                const gapRes = JSON.parse(localStorage.getItem("skillPulseSkillGapResult") || "null");
+                if (gapRes && gapRes.target_role) targetRoleHint = gapRes.target_role;
+                const profRes = JSON.parse(localStorage.getItem("skillPulseProfileResult") || "null");
+                const storedTarget = localStorage.getItem("skillPulseTargetCareer");
+                if (storedTarget) targetRoleHint = storedTarget;
+            } catch(_) {}
+
+            const payload = {
+                location: simLocationVal,
+                profession: simProfessionVal,
+                skills: simSkillsVal,
+                qualification: simQualificationVal || undefined,
+                target_skill: trainingSkill,
+                additional_trainees: trainingPeople
+            };
+            if (targetRoleHint) payload.target_role = targetRoleHint;
+
+            try {
+                let data;
+                if (typeof apiPost === "function") {
+                    data = await apiPost("/api/simulator/run", payload);
+                } else {
+                    const resp = await fetch((typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:8000') + "/api/simulator/run", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!resp.ok) {
+                        const t = await resp.text().catch(()=> "");
+                        console.error("Simulator HTTP error:", resp.status, t);
+                        throw new Error(t || `Request failed (${resp.status})`);
+                    }
+                    data = await resp.json();
+                }
+                console.log("Simulator Backend Response:", data);
+                localStorage.setItem("skillPulseSimulatorResult", JSON.stringify(data));
+
+                // Populate baseline / scenario / delta
+                document.getElementById("resultPeople").textContent = trainingPeople.toLocaleString();
+                document.getElementById("resultSkill").textContent = data.target_skill;
+                document.getElementById("simTargetRole").textContent = `· ${data.target_role} · ${data.location}`;
+
+                const b = data.baseline, s = data.scenario, d = data.delta;
+                document.getElementById("simBaselineAlignment").textContent = `${b.alignment_score}/100`;
+                document.getElementById("simBaselineAlignmentDetail").textContent = `Supply: ${b.supply_level} / Demand: ${b.demand_level}`;
+                document.getElementById("simBaselineCoverage").textContent = `${b.workforce_coverage}/100`;
+                document.getElementById("simBaselineCoverageDetail").textContent = `Unmet: ${b.unmet_demand}`;
+                document.getElementById("simBaselineOpportunity").textContent = `${b.opportunity_index}/100`;
+
+                document.getElementById("simScenarioAlignment").textContent = `${s.alignment_score}/100`;
+                document.getElementById("simScenarioAlignmentDelta").textContent = `Δ ${d.alignment_delta >=0?'+':''}${d.alignment_delta}`;
+                document.getElementById("simScenarioCoverage").textContent = `${s.workforce_coverage}/100`;
+                document.getElementById("simScenarioCoverageDelta").textContent = `Δ ${d.coverage_delta >=0?'+':''}${d.coverage_delta}`;
+                document.getElementById("simScenarioOpportunity").textContent = `${s.opportunity_index}/100`;
+                document.getElementById("simScenarioOpportunityDelta").textContent = `Δ ${d.opportunity_delta >=0?'+':''}${d.opportunity_delta}`;
+
+                document.getElementById("simCoverageDelta").textContent = `${d.coverage_delta >=0?'+':''}${d.coverage_delta}`;
+                document.getElementById("simAlignmentDelta").textContent = `${d.alignment_delta >=0?'+':''}${d.alignment_delta}`;
+                document.getElementById("simOpportunityDelta").textContent = `${d.opportunity_delta >=0?'+':''}${d.opportunity_delta}`;
+
+                document.getElementById("resultImpact").textContent = `${d.unmet_demand_delta >=0?'+':''}${d.unmet_demand_delta}`;
+                document.getElementById("resultImpactDetail").textContent = `Unmet demand ${d.unmet_demand_delta <0? 'reduced' : 'changed'} (${b.unmet_demand} → ${s.unmet_demand}) · Scenario supply: ${s.supply_level}`;
+
+                document.getElementById("simulationMessage").textContent = data.explanation || "";
+                const metaEl = document.getElementById("simMetadata");
+                if (metaEl) metaEl.textContent = `Engine: ${data.metadata?.engine_mode || "PROTOTYPE_BASELINE"} · Model: ${data.metadata?.model || "WHATIF_SIMULATOR_V1"} · ${data.metadata?.disclaimer || ""}`;
+
+                document.getElementById("simulationResult").style.display = "block";
+                document.getElementById("simulationResult").scrollIntoView({ behavior: "smooth", block: "start" });
+
+            } catch (err) {
+                console.error("Simulator Backend Error:", err);
+                const friendly = err && err.message ? err.message : "Simulation failed. Please ensure backend is running.";
+                if (errorEl) { errorEl.textContent = friendly + " — see console for details."; errorEl.style.display = "block"; }
+                else alert(friendly);
+            } finally {
+                if (loadingEl) loadingEl.style.display = "none";
+                if (btn) { btn.disabled = false; btn.style.opacity = ""; btn.textContent = "Run Simulation →"; }
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

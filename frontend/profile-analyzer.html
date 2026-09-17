@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile & Career Analyzer - Skill Pulse</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f9;
+            color: #222;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #061936;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #20385c;
+        }
+
+        header h1 {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #dbe8f8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #159cf0;
+        }
+
+        nav a.active {
+            color: #159cf0;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .page {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            font-size: 40px;
+            color: #0b1f3a;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #5d6b7d;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 16px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+            border: 1px solid #dfe7f0;
+        }
+
+        .section h3 {
+            color: #0b1f3a;
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: #0b1f3a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #cdd8e5;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            font-family: Arial, sans-serif;
+
+            background: #f9fbfd;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #159cf0;
+
+            box-shadow: 0 0 0 3px rgba(21, 156, 240, 0.12);
+
+            background: white;
+        }
+
+        .help-text {
+            margin-top: 7px;
+
+            color: #718096;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           FILE UPLOAD
+        ========================= */
+
+        .upload-box {
+            background: #f5f8fc;
+
+            border: 2px dashed #b9c9da;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: #159cf0;
+            background: #f0f8ff;
+        }
+
+        .upload-box input {
+            background: white;
+            border: 1px solid #cdd8e5;
+        }
+
+        .upload-title {
+            color: #0b1f3a;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .upload-text {
+            color: #718096;
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           LINKS
+        ========================= */
+
+        .link-note {
+            color: #718096;
+
+            font-size: 13px;
+
+            margin-top: 7px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .analyze-button {
+            display: block;
+
+            margin: 30px auto 10px;
+
+            padding: 15px 35px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #0b1f3a;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .analyze-button:hover {
+            background: #159cf0;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 7px 18px rgba(21, 156, 240, 0.25);
+        }
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: linear-gradient(135deg, #eef8ff, #f7fbff);
+
+            border-left: 5px solid #159cf0;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            margin-top: 20px;
+        }
+
+        .info-box h4 {
+            color: #0b1f3a;
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+        .info-box p {
+            color: #4d5d70;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           PROTOTYPE NOTE
+        ========================= */
+
+        .prototype {
+            text-align: center;
+
+            color: #718096;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 800px;
+
+            margin: 30px auto;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 60px;
+
+            background: #061936;
+
+            color: #b8c7da;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 18px;
+
+                text-align: center;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            .page {
+                margin-top: 30px;
+            }
+
+            .page-header h2 {
+                font-size: 31px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .section {
+                padding: 22px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">
+                Home
+            </a>
+
+            <a href="skill-gap.html">
+                Skill Gap
+            </a>
+
+            <a href="training-impact.html">
+                Training Impact
+            </a>
+
+            <a href="geographic.html">
+                Geographic Intelligence
+            </a>
+
+            <a href="simulator.html">
+                Simulator
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="page">
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-header">
+
+            <h2>Profile & Career Analyzer</h2>
+
+            <p>
+                Enter your education, profession and skills
+                to generate a personalized skill intelligence report.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             PERSONAL DETAILS
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Personal & Career Details</h3>
+
+            <div class="form-grid">
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location / State
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Example: Rajasthan"
+                    >
+
+                </div>
+
+
+                <!-- QUALIFICATION -->
+
+                <div class="form-group">
+
+                    <label for="qualification">
+                        Qualification
+                    </label>
+
+                    <input
+                        type="text"
+                        id="qualification"
+                        placeholder="Example: B.Tech"
+                    >
+
+                </div>
+
+
+                <!-- PROFESSION -->
+
+                <div class="form-group">
+
+                    <label for="profession">
+                        Profession / Course
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profession"
+                        placeholder="Example: Civil Engineering"
+                    >
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="form-group">
+
+                    <label for="skills">
+                        Skills / Training Completed
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Example: AutoCAD, Surveying"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESUME
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Resume</h3>
+
+            <div class="upload-box">
+
+                <div class="upload-title">
+                    Upload Your Resume
+                </div>
+
+                <div class="upload-text">
+                    Upload a PDF resume for the future
+                    profile-analysis system.
+                </div>
+
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GITHUB
+        ========================= -->
+
+        <section class="section">
+
+            <h3>GitHub Profile</h3>
+
+            <div class="form-group">
+
+                <label for="githubLink">
+                    GitHub Profile Link
+                </label>
+
+                <input
+                    type="url"
+                    id="githubLink"
+                    placeholder="https://github.com/yourusername"
+                >
+
+                <p class="link-note">
+                    Add your GitHub profile if you have one.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LINKEDIN
+        ========================= -->
+
+        <section class="section">
+
+            <h3>LinkedIn Profile</h3>
+
+            <div class="form-group">
+
+                <label for="linkedinLink">
+                    LinkedIn Profile Link
+                </label>
+
+                <input
+                    type="url"
+                    id="linkedinLink"
+                    placeholder="https://www.linkedin.com/in/yourprofile"
+                >
+
+                <p class="link-note">
+                    Add your LinkedIn profile if you have one.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMATION
+        ========================= -->
+
+        <div class="info-box">
+
+            <h4>How Skill Pulse Works</h4>
+
+            <p>
+                Your profile information is used to connect
+                your skills and career area with skill-gap,
+                geographic-demand and training-impact analysis.
+                In the final system, these results can be
+                connected to backend datasets and intelligence models.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             ANALYZE BUTTON
+        ========================= -->
+
+        <button
+            class="analyze-button"
+            id="analyzeBtn"
+            onclick="analyzeProfile()"
+        >
+            Analyze My Profile →
+        </button>
+
+        <div id="profileError" style="display:none; margin-top:16px; padding:14px 16px; background:#fff1f2; border:1px solid #fecdd3; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:14px; line-height:1.5;"></div>
+        <div id="profileLoading" style="display:none; margin-top:12px; text-align:center; color:#159cf0; font-weight:bold; font-size:14px;">Analyzing your profile...</div>
+
+
+        <!-- =========================
+             PROTOTYPE NOTE
+        ========================= -->
+
+        <p class="prototype">
+
+            Prototype / Demo:
+            The current frontend stores your entered profile
+            information locally and passes it to the Skill Gap
+            module.
+
+            Resume, GitHub and LinkedIn are currently collected
+            as profile inputs and are not automatically analyzed
+            by the frontend.
+
+        </p>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Skill Pulse — AI-Powered Skill Intelligence
+        </p>
+
+    </footer>
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        async function analyzeProfile() {
+
+            const location =
+                document.getElementById("location").value.trim();
+
+            const qualification =
+                document.getElementById("qualification").value.trim();
+
+            const profession =
+                document.getElementById("profession").value.trim();
+
+            const skills =
+                document.getElementById("skills").value.trim();
+
+            const resume =
+                document.getElementById("resumeFile").files[0];
+
+            const github =
+                document.getElementById("githubLink").value.trim();
+
+            const linkedin =
+                document.getElementById("linkedinLink").value.trim();
+
+
+            /* =========================
+               VALIDATION
+            ========================= */
+
+            if (!location) {
+                alert("Please enter your location.");
+                return;
+            }
+
+            if (!qualification) {
+                alert("Please enter your qualification.");
+                return;
+            }
+
+            if (!profession) {
+                alert("Please enter your profession or course.");
+                return;
+            }
+
+            if (!skills) {
+                alert("Please enter your skills or training.");
+                return;
+            }
+
+            if (!resume) {
+                alert("Please upload your resume.");
+                return;
+            }
+
+            if (!github) {
+                alert("Please enter your GitHub profile link.");
+                return;
+            }
+
+            if (!linkedin) {
+                alert("Please enter your LinkedIn profile link.");
+                return;
+            }
+
+
+            /* =========================
+               SAVE PROFILE DATA
+            ========================= */
+
+            localStorage.setItem(
+                "skillPulseLocation",
+                location
+            );
+
+            localStorage.setItem(
+                "skillPulseQualification",
+                qualification
+            );
+
+            localStorage.setItem(
+                "skillPulseProfession",
+                profession
+            );
+
+            localStorage.setItem(
+                "skillPulseSkills",
+                skills
+            );
+
+            localStorage.setItem(
+                "skillPulseGithub",
+                github
+            );
+
+            localStorage.setItem(
+                "skillPulseLinkedin",
+                linkedin
+            );
+
+
+            /* =========================
+               CALL BACKEND — with error handling
+            ========================= */
+
+            const btn = document.getElementById("analyzeBtn");
+            const errBox = document.getElementById("profileError");
+            const loading = document.getElementById("profileLoading");
+            const originalBtnText = btn ? btn.textContent : "";
+
+            if (errBox) { errBox.style.display = "none"; errBox.textContent = ""; }
+            if (loading) loading.style.display = "block";
+            if (btn) { btn.disabled = true; btn.style.opacity = "0.7"; btn.textContent = "Analyzing..."; }
+
+            const payload = {
+                location: location,
+                qualification: qualification,
+                profession: profession,
+                skills: skills,
+                github: github || null,
+                linkedin: linkedin || null
+            };
+            // include optional experience/target_career if present in localStorage
+            const storedExp = localStorage.getItem("skillPulseExperience");
+            if (storedExp) payload.experience = storedExp;
+            const storedTarget = localStorage.getItem("skillPulseTargetCareer");
+            if (storedTarget) payload.target_career = storedTarget;
+
+            try {
+                // Prefer helper if available, otherwise direct fetch
+                let data;
+                if (typeof apiPost === "function") {
+                    data = await apiPost("/api/profile/analyze", payload);
+                } else {
+                    const response = await fetch(`${typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:8000'}/api/profile/analyze`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) {
+                        const errText = await response.text().catch(()=> "");
+                        let detail = errText;
+                        try { const j = JSON.parse(errText); detail = j.detail || errText; } catch(_) {}
+                        console.error("Profile analyze HTTP error:", response.status, detail);
+                        throw new Error(detail || `Request failed (${response.status})`);
+                    }
+                    data = await response.json();
+                }
+
+                console.log("Backend response:", data);
+
+                if (!data || data.status !== "success") {
+                    console.warn("Unexpected backend response shape:", data);
+                }
+
+                localStorage.setItem("skillPulseProfileResult", JSON.stringify(data));
+                // Also ensure profile keys stay consistent for downstream pages
+                // (already saved above)
+
+                window.location.href = "skill-gap.html";
+            } catch (error) {
+                console.error("Backend error (profile/analyze):", error);
+                const friendly = error && error.message ? error.message : "Backend connection failed. Please ensure the backend is running at http://127.0.0.1:8000";
+                if (errBox) {
+                    errBox.textContent = friendly + " — check console for details.";
+                    errBox.style.display = "block";
+                } else {
+                    alert(friendly);
+                }
+            } finally {
+                if (loading) loading.style.display = "none";
+                if (btn) { btn.disabled = false; btn.style.opacity = ""; btn.textContent = originalBtnText; }
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

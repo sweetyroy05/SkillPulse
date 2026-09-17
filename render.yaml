@@ -1,0 +1,38 @@
+# SKILL PULSE — Render Deployment Configuration
+# This file is optional — you can also configure manually in Render dashboard.
+# It defines the backend web service for FastAPI.
+# See DEPLOYMENT_GUIDE.md for manual steps.
+
+services:
+  - type: web
+    name: skill-pulse-backend
+    env: python
+    plan: free
+    # Backend code lives in backend/ folder
+    rootDir: backend
+    # Render will run these commands
+    buildCommand: pip install -r requirements.txt
+    # CRITICAL: Use Render-provided $PORT (do NOT hardcode 8000)
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    # Environment variables — set these in Render dashboard (do NOT commit .env)
+    envVars:
+      - key: DATA_SOURCE_MODE
+        value: LOCAL
+        sync: false
+      - key: FRONTEND_URL
+        # Replace after you deploy frontend to Vercel, e.g., https://skill-pulse.vercel.app
+        # This allows CORS for your production frontend
+        value: https://YOUR-FRONTEND.vercel.app
+        sync: false
+      # Optional: add CORS_EXTRA_ORIGINS if you have multiple frontends
+      # - key: CORS_EXTRA_ORIGINS
+      #   value: https://your-custom-domain.com
+      # Optional Jooble (leave blank for LOCAL mode)
+      - key: JOOBLE_API_KEY
+        sync: false
+      - key: JOOBLE_BASE_URL
+        value: https://jooble.org/api
+        sync: false
+      # Python version — Render will use latest 3.11/3.12 if not pinned
+    # No Dockerfile needed — Render uses native Python build

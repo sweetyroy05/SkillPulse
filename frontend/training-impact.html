@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Training Impact Analyzer - SKILL PULSE</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">Home</a>
+
+            <a href="skill-gap.html">Skill Gap</a>
+
+            <a href="training-impact.html">Training Impact</a>
+
+            <a href="geographic.html">Geographic Intelligence</a>
+
+            <a href="simulator.html">Simulator</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="analyzer-page">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="analyzer-header">
+
+            <h2>Training Impact Analyzer</h2>
+
+            <p>
+                Understand how training and skills can influence
+                employment outcomes and career opportunities.
+            </p>
+
+        </div>
+
+
+
+        <!-- USER PROFILE -->
+
+        <section class="analyzer-section">
+
+            <h3>👤 Your Profile</h3>
+
+            <p>
+                Your profile information is automatically taken
+                from the Profile & Career Analyzer.
+            </p>
+
+
+            <div class="profile-grid">
+
+                <div>
+
+                    <strong>📍 Location</strong>
+
+                    <p id="trainingLocation">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🎓 Qualification</strong>
+
+                    <p id="trainingQualification">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>💼 Profession / Course</strong>
+
+                    <p id="trainingProfession">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🛠️ Skills / Training</strong>
+
+                    <p id="trainingSkills">
+                        Not provided
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TRAINING IMPACT -->
+
+        <section class="analyzer-section">
+
+            <h3>📚 Training Impact <span id="trainingTargetRole" style="font-size:14px; color:#5d6b7d; font-weight:normal;"></span></h3>
+
+            <p>
+                Skill Pulse compares your existing skills with
+                prototype employment and market-demand data.
+            </p>
+
+            <div id="trainingLoading" style="display:none; text-align:center; padding:12px; color:#159cf0; font-weight:bold;">Analyzing training impact...</div>
+            <div id="trainingError" style="display:none; margin-bottom:14px; padding:14px 16px; background:#fff1f2; border:1px solid #fecdd3; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:14px; line-height:1.5;"></div>
+
+            <div class="demand-box">
+
+                <div>
+
+                    <strong>Current Skill Alignment</strong>
+
+                    <p id="trainingCurrentAlignment">-- / 100</p>
+                    <div style="font-size:12px; color:#718096; margin-top:4px;" id="trainingProjectedAlignment"></div>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Training Relevance</strong>
+
+                    <p id="trainingRelevance">—</p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Employment Alignment</strong>
+
+                    <p id="trainingEmploymentAlignment">—</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TRAINING OUTCOMES -->
+
+        <section class="analyzer-section">
+
+            <h3>📈 Training Outcome Analysis</h3>
+
+            <div class="gap-list" id="trainingOutcomesList">
+
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECOMMENDED TRAINING -->
+
+        <section class="analyzer-section">
+
+            <h3>🎯 Recommended Training Programs</h3>
+            <div class="gap-list" id="recommendedTrainingList">
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+            </div>
+        </section>
+
+        <!-- RECOMMENDED SKILLS -->
+
+        <section class="analyzer-section">
+
+            <h3>🛠️ Recommended Skill Development</h3>
+            <div class="gap-list" id="recommendedSkillsList">
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+            </div>
+
+        </section>
+
+
+
+        <!-- EMPLOYMENT OUTCOME -->
+
+        <section class="analyzer-section recommendation-card">
+
+            <h3>💡 Skill Pulse Insight</h3>
+
+            <p id="trainingExplanation">
+                Loading insight from backend...
+            </p>
+            <p id="trainingExplanation2" style="margin-top:10px; font-size:13px; color:#5d6b7d;"></p>
+
+        </section>
+
+
+
+        <!-- NEXT ACTIONS -->
+
+        <section class="analyzer-section">
+
+            <h3>🚀 Continue Your Analysis</h3>
+
+
+            <div class="next-actions">
+
+                <a href="skill-gap.html">
+                    ← Skill Gap Radar
+                </a>
+
+
+                <a href="geographic.html">
+                    ← Geographic Intelligence
+                </a>
+
+
+                <a href="simulator.html">
+                    What-If Simulator →
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROTOTYPE NOTE -->
+
+        <p class="prototype-note">
+
+            Prototype / Demo Data:
+            Training outcomes and employment indicators will
+            be connected to the SKILL PULSE backend and verified
+            datasets later. These insights are decision-support
+            information and do not guarantee employment.
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            SKILL PULSE © 2026
+        </p>
+
+    </footer>
+
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* GET USER DATA */
+        const trainingLocationVal = localStorage.getItem("skillPulseLocation");
+        const trainingQualificationVal = localStorage.getItem("skillPulseQualification");
+        const trainingProfessionVal = localStorage.getItem("skillPulseProfession");
+        const trainingSkillsVal = localStorage.getItem("skillPulseSkills");
+
+        /* DISPLAY USER DATA */
+        document.getElementById("trainingLocation").textContent = trainingLocationVal || "Not provided";
+        document.getElementById("trainingQualification").textContent = trainingQualificationVal || "Not provided";
+        document.getElementById("trainingProfession").textContent = trainingProfessionVal || "Not provided";
+        document.getElementById("trainingSkills").textContent = trainingSkillsVal || "Not provided";
+
+        (async function loadTrainingImpact() {
+            const loadingEl = document.getElementById("trainingLoading");
+            const errorEl = document.getElementById("trainingError");
+            if (loadingEl) loadingEl.style.display = "block";
+            if (errorEl) { errorEl.style.display = "none"; errorEl.textContent = ""; }
+
+            if (!trainingLocationVal || !trainingQualificationVal || !trainingProfessionVal || !trainingSkillsVal) {
+                const msg = "Profile data missing. Please complete Profile Analyzer first.";
+                if (errorEl) { errorEl.textContent = msg; errorEl.style.display = "block"; }
+                if (loadingEl) loadingEl.style.display = "none";
+                document.getElementById("trainingCurrentAlignment").textContent = "-- / 100";
+                document.getElementById("trainingRelevance").textContent = "—";
+                document.getElementById("trainingEmploymentAlignment").textContent = "—";
+                document.getElementById("trainingExplanation").textContent = msg;
+                return;
+            }
+
+            let targetRoleHint = null;
+            try {
+                const profRes = JSON.parse(localStorage.getItem("skillPulseProfileResult") || "null");
+                const storedTarget = localStorage.getItem("skillPulseTargetCareer");
+                if (storedTarget) targetRoleHint = storedTarget;
+                else if (profRes && profRes.target_roles && profRes.target_roles[0]) {
+                    // let backend auto-select; do not force profession as role
+                }
+                // also try gap result
+                const gapRes = JSON.parse(localStorage.getItem("skillPulseSkillGapResult") || "null");
+                if (!targetRoleHint && gapRes && gapRes.target_role) targetRoleHint = gapRes.target_role;
+            } catch(_) {}
+
+            const payload = {
+                location: trainingLocationVal,
+                qualification: trainingQualificationVal,
+                profession: trainingProfessionVal,
+                skills: trainingSkillsVal
+            };
+            if (targetRoleHint) payload.target_role = targetRoleHint;
+
+            try {
+                let data;
+                if (typeof apiPost === "function") {
+                    data = await apiPost("/api/training-impact/analyze", payload);
+                } else {
+                    const resp = await fetch((typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:8000') + "/api/training-impact/analyze", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!resp.ok) {
+                        const t = await resp.text().catch(()=> "");
+                        console.error("Training HTTP error:", resp.status, t);
+                        throw new Error(t || `Request failed (${resp.status})`);
+                    }
+                    data = await resp.json();
+                }
+                console.log("Training Impact Backend Response:", data);
+                localStorage.setItem("skillPulseTrainingResult", JSON.stringify(data));
+
+                document.getElementById("trainingCurrentAlignment").textContent = `${data.current_skill_alignment} / 100`;
+                document.getElementById("trainingProjectedAlignment").textContent = `Projected after training: ${data.projected_skill_alignment} / 100 (boost +${data.projected_skill_alignment - data.current_skill_alignment})`;
+                document.getElementById("trainingRelevance").textContent = data.training_relevance;
+                document.getElementById("trainingEmploymentAlignment").textContent = data.employment_alignment;
+                const targetEl = document.getElementById("trainingTargetRole");
+                if (targetEl && data.target_role) targetEl.textContent = "· Target: " + data.target_role;
+
+                // Outcomes
+                const outcomesList = document.getElementById("trainingOutcomesList");
+                if (outcomesList) {
+                    outcomesList.innerHTML = "";
+                    if (data.training_outcomes && data.training_outcomes.length) {
+                        data.training_outcomes.forEach(o => {
+                            const div = document.createElement("div");
+                            div.className = "skill-item";
+                            div.innerHTML = `<div><strong>${o.area}</strong><div style="font-size:12px; color:#718096; margin-top:4px;">${o.description}</div></div><span>${o.impact}</span>`;
+                            outcomesList.appendChild(div);
+                        });
+                    } else {
+                        outcomesList.innerHTML = `<div class="skill-item"><strong>No outcomes</strong><span>—</span></div>`;
+                    }
+                }
+
+                // Recommended training programs
+                const recTrainList = document.getElementById("recommendedTrainingList");
+                if (recTrainList) {
+                    recTrainList.innerHTML = "";
+                    if (data.recommended_training && data.recommended_training.length) {
+                        data.recommended_training.forEach(t => {
+                            const div = document.createElement("div");
+                            div.className = "skill-item";
+                            const color = t.priority.includes("High") ? "#e11d48" : "#159cf0";
+                            div.innerHTML = `<div><strong>${t.title}</strong><div style="font-size:12px; color:#718096; margin-top:4px;">${t.provider} · ${t.duration_weeks} weeks · ${t.mode} · Skills: ${t.skills_addressed.join(", ")} · <span style="color:#059669">+${t.projected_score_boost} boost</span> · ID: ${t.id}</div></div><span style="color:${color}">${t.priority}</span>`;
+                            recTrainList.appendChild(div);
+                        });
+                    } else {
+                        recTrainList.innerHTML = `<div class="skill-item"><strong>No specific training matches</strong><span style="color:#718096">Practice core gaps directly</span></div>`;
+                    }
+                }
+
+                // Recommended skills
+                const recSkillsList = document.getElementById("recommendedSkillsList");
+                if (recSkillsList) {
+                    recSkillsList.innerHTML = "";
+                    if (data.recommended_skills && data.recommended_skills.length) {
+                        data.recommended_skills.forEach(s => {
+                            const div = document.createElement("div");
+                            div.className = "skill-item";
+                            const color = s.priority.includes("High") ? "#e11d48" : "#159cf0";
+                            div.innerHTML = `<strong>${s.skill} <span style="font-weight:normal; color:#718096; font-size:12px;">(${s.category})</span></strong><span style="color:${color}">${s.priority}</span>`;
+                            recSkillsList.appendChild(div);
+                        });
+                    } else {
+                        recSkillsList.innerHTML = `<div class="skill-item"><strong>All key skills covered</strong><span>—</span></div>`;
+                    }
+                }
+
+                document.getElementById("trainingExplanation").textContent = data.explanation || "";
+                const exp2 = document.getElementById("trainingExplanation2");
+                if (exp2) exp2.textContent = `Engine: ${data.metadata?.engine_mode || "PROTOTYPE_BASELINE"} · Model: ${data.metadata?.model || "TRAINING_IMPACT_SIMULATOR_V1"}`;
+
+            } catch (err) {
+                console.error("Training Impact Backend Error:", err);
+                if (errorEl) { errorEl.textContent = (err && err.message ? err.message : "Failed to load training impact.") + " — see console."; errorEl.style.display = "block"; }
+                document.getElementById("trainingExplanation").textContent = "Could not retrieve training impact. Please ensure backend is running.";
+            } finally {
+                if (loadingEl) loadingEl.style.display = "none";
+            }
+        })();
+
+    </script>
+
+
+</body>
+
+</html>

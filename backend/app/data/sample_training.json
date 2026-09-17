@@ -1,0 +1,40 @@
+{
+  "training_programs": [
+    {
+      "id": "TRN-001",
+      "title": "Advanced GIS & Remote Sensing Certification",
+      "provider": "State Geospatial Center",
+      "skills_covered": ["GIS", "Spatial Analysis"],
+      "duration_weeks": 8,
+      "mode": "Hybrid",
+      "relevance_tags": ["Geospatial & Surveying", "Infrastructure Planning"]
+    },
+    {
+      "id": "TRN-002",
+      "title": "Applied Data Analysis & SQL Mastery",
+      "provider": "National Skill Development Mission",
+      "skills_covered": ["Data Analysis", "SQL", "Excel"],
+      "duration_weeks": 6,
+      "mode": "Online",
+      "relevance_tags": ["Business & Analytics", "Data & Databases"]
+    },
+    {
+      "id": "TRN-003",
+      "title": "Python & Machine Learning Foundations",
+      "provider": "Tech Skill Academy",
+      "skills_covered": ["Python", "Machine Learning"],
+      "duration_weeks": 10,
+      "mode": "Online",
+      "relevance_tags": ["Software & Data Science"]
+    },
+    {
+      "id": "TRN-004",
+      "title": "Modern Technical Project Management",
+      "provider": "Productivity Council",
+      "skills_covered": ["Project Management"],
+      "duration_weeks": 4,
+      "mode": "Online",
+      "relevance_tags": ["Management & Operations"]
+    }
+  ]
+}

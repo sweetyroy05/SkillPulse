@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Geographic Intelligence - SKILL PULSE</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">Home</a>
+
+            <a href="skill-gap.html">Skill Gap</a>
+
+            <a href="training-impact.html">Training Impact</a>
+
+            <a href="geographic.html">Geographic Intelligence</a>
+
+            <a href="simulator.html">Simulator</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="analyzer-page">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="analyzer-header">
+
+            <h2>Geographic Skill Intelligence</h2>
+
+            <p>
+                Understand skill demand, employment opportunities
+                and skill availability across different locations.
+            </p>
+
+        </div>
+
+
+
+        <!-- USER PROFILE -->
+
+        <section class="analyzer-section">
+
+            <h3>👤 Your Profile</h3>
+
+            <p>
+                Your profile information is automatically taken
+                from the Profile & Career Analyzer.
+            </p>
+
+
+            <div class="profile-grid">
+
+                <div>
+
+                    <strong>📍 Location</strong>
+
+                    <p id="geoLocation">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🎓 Qualification</strong>
+
+                    <p id="geoQualification">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>💼 Profession / Course</strong>
+
+                    <p id="geoProfession">
+                        Not provided
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>🛠️ Skills / Training</strong>
+
+                    <p id="geoSkills">
+                        Not provided
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LOCATION INTELLIGENCE -->
+
+        <section class="analyzer-section">
+
+            <h3>📍 Location Intelligence <span id="geoRegionName" style="font-size:14px; color:#5d6b7d; font-weight:normal;"></span></h3>
+
+            <p>
+                Based on your selected location, Skill Pulse
+                analyzes the relationship between available
+                skills and market demand.
+            </p>
+
+            <div id="geoLoading" style="display:none; text-align:center; padding:12px; color:#159cf0; font-weight:bold;">Analyzing geographic intelligence...</div>
+            <div id="geoError" style="display:none; margin-bottom:14px; padding:14px 16px; background:#fff1f2; border:1px solid #fecdd3; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:14px; line-height:1.5;"></div>
+            <div id="geoStateFocus" style="font-size:13px; color:#718096; margin-bottom:8px;"></div>
+
+            <div class="demand-box">
+
+                <div>
+
+                    <strong>Skill Supply</strong>
+
+                    <p id="geoSupply">—</p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Skill Demand</strong>
+
+                    <p id="geoDemand">—</p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>Employment Opportunity</strong>
+
+                    <p id="geoOpportunity">—</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- REGIONAL SKILL DEMAND -->
+
+        <section class="analyzer-section">
+
+            <h3>📊 Regional Skill Demand</h3>
+
+            <div class="gap-list" id="geoHighDemandList">
+
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OPPORTUNITY AREAS + GROWTH SECTORS -->
+
+        <section class="analyzer-section">
+
+            <h3>🚀 Opportunity Areas</h3>
+
+            <div class="gap-list" id="geoOpportunitiesList">
+
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+
+            </div>
+
+            <h3 style="margin-top:22px; font-size:18px;">📈 Growth Sectors</h3>
+            <div class="gap-list" id="geoGrowthSectorsList">
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+            </div>
+
+            <h3 style="margin-top:22px; font-size:18px;">⚠️ Demand Gaps</h3>
+            <div class="gap-list" id="geoDemandGapsList">
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+            </div>
+
+            <h3 style="margin-top:22px; font-size:18px;">🏢 Relevant Occupations</h3>
+            <div class="gap-list" id="geoRelevantOccupationsList">
+                <div class="skill-item"><strong>Loading...</strong><span>—</span></div>
+            </div>
+
+        </section>
+
+
+
+        <!-- RECOMMENDATION -->
+
+        <section class="analyzer-section recommendation-card">
+
+            <h3>💡 Skill Pulse Recommendation</h3>
+
+            <p id="geoExplanation">
+                Loading geographic insight...
+            </p>
+            <p id="geoMetadata" style="margin-top:10px; font-size:12px; color:#718096;"></p>
+
+        </section>
+
+
+
+        <!-- NEXT MODULES -->
+
+        <section class="analyzer-section">
+
+            <h3>🚀 Continue Your Analysis</h3>
+
+
+            <div class="next-actions">
+
+                <a href="training-impact.html">
+                    Training Impact →
+                </a>
+
+
+                <a href="simulator.html">
+                    What-If Simulator →
+                </a>
+
+
+                <a href="skill-gap.html">
+                    ← Skill Gap Radar
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROTOTYPE NOTE -->
+
+        <p class="prototype-note">
+
+            Prototype / Demo Data:
+            Geographic skill demand and employment indicators
+            will be connected to the SKILL PULSE backend
+            and verified datasets later.
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            SKILL PULSE © 2026
+        </p>
+
+    </footer>
+
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* GET USER DATA */
+        const geoLocationVal = localStorage.getItem("skillPulseLocation");
+        const geoQualificationVal = localStorage.getItem("skillPulseQualification");
+        const geoProfessionVal = localStorage.getItem("skillPulseProfession");
+        const geoSkillsVal = localStorage.getItem("skillPulseSkills");
+
+        /* DISPLAY USER DATA */
+        document.getElementById("geoLocation").textContent = geoLocationVal || "Not provided";
+        document.getElementById("geoQualification").textContent = geoQualificationVal || "Not provided";
+        document.getElementById("geoProfession").textContent = geoProfessionVal || "Not provided";
+        document.getElementById("geoSkills").textContent = geoSkillsVal || "Not provided";
+
+        (async function loadGeographic() {
+            const loadingEl = document.getElementById("geoLoading");
+            const errorEl = document.getElementById("geoError");
+            if (loadingEl) loadingEl.style.display = "block";
+            if (errorEl) { errorEl.style.display = "none"; errorEl.textContent = ""; }
+
+            if (!geoLocationVal || !geoProfessionVal || !geoSkillsVal) {
+                const msg = "Profile data missing. Please complete Profile Analyzer first.";
+                if (errorEl) { errorEl.textContent = msg; errorEl.style.display = "block"; }
+                if (loadingEl) loadingEl.style.display = "none";
+                document.getElementById("geoExplanation").textContent = msg;
+                return;
+            }
+
+            const payload = {
+                location: geoLocationVal,
+                profession: geoProfessionVal,
+                skills: geoSkillsVal,
+                qualification: geoQualificationVal || undefined
+            };
+
+            try {
+                let data;
+                if (typeof apiPost === "function") {
+                    data = await apiPost("/api/geographic/analyze", payload);
+                } else {
+                    const resp = await fetch((typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:8000') + "/api/geographic/analyze", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!resp.ok) {
+                        const t = await resp.text().catch(()=> "");
+                        console.error("Geographic HTTP error:", resp.status, t);
+                        throw new Error(t || `Request failed (${resp.status})`);
+                    }
+                    data = await resp.json();
+                }
+                console.log("Geographic Backend Response:", data);
+                localStorage.setItem("skillPulseGeographicResult", JSON.stringify(data));
+
+                document.getElementById("geoSupply").textContent = data.skill_supply;
+                document.getElementById("geoDemand").textContent = data.skill_demand;
+                document.getElementById("geoOpportunity").textContent = `${data.opportunity_index} / 100`;
+                const regionEl = document.getElementById("geoRegionName");
+                if (regionEl) regionEl.textContent = `· ${data.location} (${data.state})`;
+                const stateEl = document.getElementById("geoStateFocus");
+                if (stateEl) stateEl.textContent = `State: ${data.state} | Economic focus: ${data.economic_focus.join(", ")}`;
+
+                // High demand skills
+                const hdList = document.getElementById("geoHighDemandList");
+                if (hdList) {
+                    hdList.innerHTML = "";
+                    data.high_demand_skills.forEach(hd => {
+                        const div = document.createElement("div");
+                        div.className = "skill-item";
+                        const hasColor = hd.user_has_skill ? "#059669" : "#e11d48";
+                        const hasText = hd.user_has_skill ? "You have this" : "Gap";
+                        div.innerHTML = `<div><strong>${hd.skill}</strong><div style="font-size:12px; color:${hasColor}">${hasText}</div></div><span>${hd.demand_level}</span>`;
+                        hdList.appendChild(div);
+                    });
+                }
+
+                // Opportunities
+                const oppList = document.getElementById("geoOpportunitiesList");
+                if (oppList) {
+                    oppList.innerHTML = "";
+                    if (data.geographic_opportunities && data.geographic_opportunities.length) {
+                        data.geographic_opportunities.forEach(op => {
+                            const div = document.createElement("div");
+                            div.className = "skill-item";
+                            div.innerHTML = `<div><strong>${op.role_or_title}</strong><div style="font-size:12px; color:#718096; margin-top:4px;">${op.sector} · ${op.description}</div></div><span>${op.alignment_status}</span>`;
+                            oppList.appendChild(div);
+                        });
+                    } else {
+                        oppList.innerHTML = `<div class="skill-item"><strong>No specific opportunities found</strong><span>—</span></div>`;
+                    }
+                }
+
+                const growthList = document.getElementById("geoGrowthSectorsList");
+                if (growthList) {
+                    growthList.innerHTML = "";
+                    data.growth_sectors.forEach(s => {
+                        const div = document.createElement("div");
+                        div.className = "skill-item";
+                        div.innerHTML = `<strong>${s}</strong><span>Growth</span>`;
+                        growthList.appendChild(div);
+                    });
+                }
+
+                const gapsList = document.getElementById("geoDemandGapsList");
+                if (gapsList) {
+                    gapsList.innerHTML = "";
+                    data.demand_gaps.forEach(g => {
+                        const div = document.createElement("div");
+                        div.className = "skill-item";
+                        div.innerHTML = `<strong>${g}</strong><span>High Demand</span>`;
+                        gapsList.appendChild(div);
+                    });
+                }
+
+                const occList = document.getElementById("geoRelevantOccupationsList");
+                if (occList) {
+                    occList.innerHTML = "";
+                    data.relevant_occupations.forEach(o => {
+                        const div = document.createElement("div");
+                        div.className = "skill-item";
+                        div.innerHTML = `<strong>${o}</strong><span>Relevant</span>`;
+                        occList.appendChild(div);
+                    });
+                }
+
+                document.getElementById("geoExplanation").textContent = data.explanation || "";
+                const metaEl = document.getElementById("geoMetadata");
+                if (metaEl) metaEl.textContent = `Opportunity Index: ${data.opportunity_index}/100 | Supply: ${data.skill_supply} | Demand: ${data.skill_demand} | Engine: ${data.metadata?.engine_mode || "PROTOTYPE_BASELINE"}`;
+
+            } catch (err) {
+                console.error("Geographic Backend Error:", err);
+                if (errorEl) { errorEl.textContent = (err && err.message ? err.message : "Failed to load geographic intelligence.") + " — see console."; errorEl.style.display = "block"; }
+                document.getElementById("geoExplanation").textContent = "Could not retrieve geographic data. Please ensure backend is running.";
+            } finally {
+                if (loadingEl) loadingEl.style.display = "none";
+            }
+        })();
+
+    </script>
+
+
+</body>
+
+</html>

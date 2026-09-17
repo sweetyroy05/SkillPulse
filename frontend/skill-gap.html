@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap Radar - Skill Pulse</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f9;
+            color: #222;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #061936;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #20385c;
+        }
+
+        header h1 {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #dbe8f8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #159cf0;
+        }
+
+        nav a.active {
+            color: #159cf0;
+        }
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
+        .page {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            font-size: 40px;
+            color: #0b1f3a;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #5d6b7d;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 16px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+            border: 1px solid #dfe7f0;
+        }
+
+        .section h3 {
+            color: #0b1f3a;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .profile-item {
+            background: #f5f8fc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #159cf0;
+        }
+
+        .profile-item strong {
+            display: block;
+            color: #0b1f3a;
+            margin-bottom: 8px;
+        }
+
+        .profile-item span {
+            color: #566579;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           SKILL MATCH
+        ========================= */
+
+        .match-box {
+            background: #f5f8fc;
+            border-radius: 15px;
+            padding: 30px;
+
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .score {
+            font-size: 55px;
+            font-weight: bold;
+            color: #159cf0;
+            min-width: 160px;
+        }
+
+        .score small {
+            font-size: 22px;
+            color: #718096;
+        }
+
+        .match-text h4 {
+            color: #0b1f3a;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .match-text p {
+            color: #5d6b7d;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SKILL LIST
+        ========================= */
+
+        .skill-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .skill {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #f5f8fc;
+
+            padding: 17px 20px;
+
+            border-radius: 10px;
+
+            border-left: 5px solid #159cf0;
+        }
+
+        .skill-name {
+            color: #0b1f3a;
+            font-weight: bold;
+        }
+
+        .priority {
+            color: #159cf0;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MARKET DEMAND
+        ========================= */
+
+        .demand-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .demand {
+            background: #f5f8fc;
+            padding: 25px;
+            border-radius: 13px;
+            text-align: center;
+        }
+
+        .demand h4 {
+            color: #0b1f3a;
+            margin-bottom: 12px;
+        }
+
+        .demand strong {
+            font-size: 22px;
+            color: #159cf0;
+        }
+
+        /* =========================
+           RECOMMENDATION
+        ========================= */
+
+        .recommendation {
+            background: linear-gradient(135deg, #eef8ff, #f7fbff);
+
+            border-left: 6px solid #159cf0;
+
+            padding: 25px;
+
+            border-radius: 12px;
+        }
+
+        .recommendation h3 {
+            margin-bottom: 12px;
+        }
+
+        .recommendation p {
+            color: #4d5d70;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NEXT ACTIONS
+        ========================= */
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .actions a {
+            text-decoration: none;
+
+            background: #0b1f3a;
+            color: white;
+
+            padding: 13px 22px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .actions a:hover {
+            background: #159cf0;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           PROTOTYPE NOTE
+        ========================= */
+
+        .prototype {
+            text-align: center;
+
+            color: #718096;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin: 30px auto;
+
+            max-width: 800px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 60px;
+
+            background: #061936;
+
+            color: #b8c7da;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+                gap: 18px;
+                text-align: center;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            .page {
+                margin-top: 30px;
+            }
+
+            .page-header h2 {
+                font-size: 31px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demand-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .match-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .score {
+                min-width: auto;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html">Home</a>
+
+            <a href="skill-gap.html" class="active">
+                Skill Gap
+            </a>
+
+            <a href="training-impact.html">
+                Training Impact
+            </a>
+
+            <a href="geographic.html">
+                Geographic Intelligence
+            </a>
+
+            <a href="simulator.html">
+                Simulator
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="page">
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-header">
+
+            <h2>Skill Gap Radar</h2>
+
+            <p>
+                Understand how your current skills compare with
+                market demand and identify areas for improvement.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             USER PROFILE
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Your Profile</h3>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <strong>Location</strong>
+
+                    <span id="gapLocation">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Qualification</strong>
+
+                    <span id="gapQualification">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Profession / Course</strong>
+
+                    <span id="gapProfession">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>Skills / Training</strong>
+
+                    <span id="gapSkills">
+                        Loading...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILL MATCH
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Skill Match <span id="gapTargetRole" style="font-size:15px; color:#5d6b7d; font-weight:normal;"></span></h3>
+
+            <div id="gapLoading" style="display:none; text-align:center; padding:12px; color:#159cf0; font-weight:bold;">Analyzing skill gap against backend...</div>
+            <div id="gapError" style="display:none; margin-bottom:14px; padding:14px 16px; background:#fff1f2; border:1px solid #fecdd3; border-left:4px solid #e11d48; border-radius:10px; color:#9f1239; font-size:14px; line-height:1.5;"></div>
+
+            <div class="match-box">
+
+                <div class="score" id="gapScore">
+
+                    --<small>/100</small>
+
+                </div>
+
+                <div class="match-text">
+
+                    <h4 id="gapLevel">Loading...</h4>
+
+                    <p id="gapSummary">
+                        Loading skill intelligence from backend...
+                    </p>
+                    <p id="gapScoringBreakdown" style="margin-top:10px; font-size:13px; color:#718096;"></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CURRENT SKILLS
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Skills You Have <span id="matchedCount" style="font-size:14px; color:#718096; font-weight:normal;"></span></h3>
+
+            <div class="skill-list" id="matchedSkillsList">
+
+                <div class="skill"><span class="skill-name">Loading...</span><span class="priority">—</span></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS NEEDED
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Skills You May Need <span id="gapsCount" style="font-size:14px; color:#718096; font-weight:normal;"></span></h3>
+
+            <div class="skill-list" id="skillGapsList">
+
+                <div class="skill"><span class="skill-name">Loading...</span><span class="priority">—</span></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MARKET DEMAND / SCORING BREAKDOWN
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Scoring Breakdown <span style="font-size:13px; color:#718096; font-weight:normal;">(deterministic 70/30)</span></h3>
+
+            <div class="demand-grid">
+
+                <div class="demand">
+
+                    <h4>Core Coverage</h4>
+
+                    <strong id="breakdownCore">—</strong>
+                    <div style="font-size:12px; color:#718096; margin-top:6px;" id="breakdownCoreDetail"></div>
+
+                </div>
+
+
+                <div class="demand">
+
+                    <h4>Secondary Coverage</h4>
+
+                    <strong id="breakdownSec">—</strong>
+                    <div style="font-size:12px; color:#718096; margin-top:6px;" id="breakdownSecDetail"></div>
+
+                </div>
+
+
+                <div class="demand">
+
+                    <h4>Formula</h4>
+
+                    <strong id="breakdownFormula" style="font-size:13px; line-height:1.4;">—</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECOMMENDATION
+        ========================= -->
+
+        <section class="section recommendation">
+
+            <h3>Recommendation</h3>
+
+            <p id="gapRecommendation">
+
+                Loading recommendation from backend...
+
+            </p>
+            <p id="gapRequiredSkills" style="margin-top:10px; font-size:13px; color:#5d6b7d;"></p>
+
+        </section>
+
+
+        <!-- =========================
+             NEXT ACTIONS
+        ========================= -->
+
+        <section class="section">
+
+            <h3>Continue with Skill Pulse</h3>
+
+            <div class="actions">
+
+                <a href="training-impact.html">
+                    Training Impact →
+                </a>
+
+                <a href="geographic.html">
+                    Geographic Intelligence →
+                </a>
+
+                <a href="simulator.html">
+                    What-If Simulator →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROTOTYPE NOTE
+        ========================= -->
+
+        <p class="prototype">
+
+            Prototype / Demo:
+            The displayed market and skill intelligence
+            values are demonstration data.
+
+            In the final system, these values will be
+            connected to backend datasets and calculations.
+
+        </p>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Skill Pulse — AI-Powered Skill Intelligence
+        </p>
+
+    </footer>
+
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // Get information saved from Profile & Career Analyzer
+        const gapLocationVal = localStorage.getItem("skillPulseLocation");
+        const gapQualificationVal = localStorage.getItem("skillPulseQualification");
+        const gapProfessionVal = localStorage.getItem("skillPulseProfession");
+        const gapSkillsVal = localStorage.getItem("skillPulseSkills");
+
+        // Display information
+        document.getElementById("gapLocation").textContent = gapLocationVal || "Not provided";
+        document.getElementById("gapQualification").textContent = gapQualificationVal || "Not provided";
+        document.getElementById("gapProfession").textContent = gapProfessionVal || "Not provided";
+        document.getElementById("gapSkills").textContent = gapSkillsVal || "Not provided";
+
+        (async function loadSkillGap() {
+            const loadingEl = document.getElementById("gapLoading");
+            const errorEl = document.getElementById("gapError");
+            if (loadingEl) loadingEl.style.display = "block";
+            if (errorEl) { errorEl.style.display = "none"; errorEl.textContent = ""; }
+
+            if (!gapLocationVal || !gapQualificationVal || !gapProfessionVal || !gapSkillsVal) {
+                const msg = "Profile data missing. Please complete Profile Analyzer first.";
+                console.warn(msg);
+                if (errorEl) { errorEl.textContent = msg; errorEl.style.display = "block"; }
+                if (loadingEl) loadingEl.style.display = "none";
+                document.getElementById("gapLevel").textContent = "Profile required";
+                document.getElementById("gapSummary").textContent = msg;
+                document.getElementById("gapScore").innerHTML = '--<small>/100</small>';
+                return;
+            }
+
+            // Try to reuse target_role from saved profile result if available
+            let targetRoleHint = null;
+            try {
+                const profResult = JSON.parse(localStorage.getItem("skillPulseProfileResult") || "null");
+                if (profResult && profResult.target_roles && profResult.target_roles[0]) {
+                    // Use profession as fallback, but prefer stored target_career if present
+                    const storedTarget = localStorage.getItem("skillPulseTargetCareer");
+                    if (storedTarget) targetRoleHint = storedTarget;
+                    // Otherwise let backend auto-select by not sending target_role
+                }
+            } catch(_) {}
+
+            const payload = {
+                location: gapLocationVal,
+                qualification: gapQualificationVal,
+                profession: gapProfessionVal,
+                skills: gapSkillsVal
+            };
+            if (targetRoleHint) payload.target_role = targetRoleHint;
+
+            try {
+                let data;
+                if (typeof apiPost === "function") {
+                    data = await apiPost("/api/skill-gap/analyze", payload);
+                } else {
+                    const resp = await fetch((typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:8000') + "/api/skill-gap/analyze", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!resp.ok) {
+                        const t = await resp.text().catch(()=> "");
+                        console.error("Skill-gap HTTP error:", resp.status, t);
+                        throw new Error(t || `Request failed (${resp.status})`);
+                    }
+                    data = await resp.json();
+                }
+                console.log("Skill Gap Backend Response:", data);
+                localStorage.setItem("skillPulseSkillGapResult", JSON.stringify(data));
+
+                // Render
+                const score = data.alignment_score;
+                const level = data.alignment_level;
+                const summary = data.summary;
+                document.getElementById("gapScore").innerHTML = `${score}<small>/100</small>`;
+                document.getElementById("gapLevel").textContent = level || "Alignment";
+                document.getElementById("gapSummary").textContent = summary || "";
+                const targetEl = document.getElementById("gapTargetRole");
+                if (targetEl && data.target_role) targetEl.textContent = "· Target: " + data.target_role + (data.target_role_id ? " ("+data.target_role_id+")" : "");
+
+                // Scoring breakdown
+                if (data.scoring_breakdown) {
+                    const b = data.scoring_breakdown;
+                    document.getElementById("breakdownCore").textContent = `${b.core_coverage_pct}%`;
+                    document.getElementById("breakdownCoreDetail").textContent = `${b.matched_core_count}/${b.total_core_count} core matched`;
+                    document.getElementById("breakdownSec").textContent = `${b.secondary_coverage_pct}%`;
+                    document.getElementById("breakdownSecDetail").textContent = `${b.matched_sec_count}/${b.total_sec_count} secondary matched`;
+                    document.getElementById("breakdownFormula").textContent = b.formula || "0.70*Core + 0.30*Secondary";
+                    const breakdownEl = document.getElementById("gapScoringBreakdown");
+                    if (breakdownEl) breakdownEl.textContent = `Formula: ${b.formula} | Weighted: ${(b.core_weight*100).toFixed(0)}% core, ${(b.secondary_weight*100).toFixed(0)}% secondary`;
+                }
+
+                // Matched skills
+                const matchedList = document.getElementById("matchedSkillsList");
+                if (matchedList) {
+                    matchedList.innerHTML = "";
+                    if (data.matched_skills && data.matched_skills.length) {
+                        document.getElementById("matchedCount").textContent = `(${data.matched_skills.length})`;
+                        data.matched_skills.forEach(item => {
+                            const div = document.createElement("div");
+                            div.className = "skill";
+                            div.innerHTML = `<span class="skill-name">${item.skill} <span style="font-weight:normal; color:#718096; font-size:12px;">(${item.type} · ${item.category})</span></span><span class="priority">${item.priority}</span>`;
+                            matchedList.appendChild(div);
+                        });
+                    } else {
+                        document.getElementById("matchedCount").textContent = "(0)";
+                        matchedList.innerHTML = `<div class="skill"><span class="skill-name">No direct matches — consider foundational training</span><span class="priority">—</span></div>`;
+                    }
+                }
+
+                // Skill gaps
+                const gapsList = document.getElementById("skillGapsList");
+                if (gapsList) {
+                    gapsList.innerHTML = "";
+                    if (data.skill_gaps && data.skill_gaps.length) {
+                        document.getElementById("gapsCount").textContent = `(${data.skill_gaps.length})`;
+                        data.skill_gaps.forEach(item => {
+                            const div = document.createElement("div");
+                            div.className = "skill";
+                            // color priority: High -> redish, Medium -> blue
+                            const color = item.priority.includes("High") ? "#e11d48" : "#159cf0";
+                            div.innerHTML = `<span class="skill-name">${item.skill} <span style="font-weight:normal; color:#718096; font-size:12px;">(${item.type} · ${item.category})</span></span><span class="priority" style="color:${color}">${item.priority}</span>`;
+                            gapsList.appendChild(div);
+                        });
+                    } else {
+                        document.getElementById("gapsCount").textContent = "(0)";
+                        gapsList.innerHTML = `<div class="skill"><span class="skill-name">No gaps — strong alignment!</span><span class="priority" style="color:#059669">Complete</span></div>`;
+                    }
+                }
+
+                // Recommendation & required skills
+                const recEl = document.getElementById("gapRecommendation");
+                if (recEl) recEl.textContent = summary || recEl.textContent;
+                const reqEl = document.getElementById("gapRequiredSkills");
+                if (reqEl && data.required_skills) {
+                    reqEl.textContent = `Required for ${data.target_role}: ${data.required_skills.join(", ")}`;
+                }
+                if (data.existing_skills && data.existing_skills.length) {
+                    // update profile skills display to normalized if desired? Keep original but log
+                    console.log("Existing canonical skills:", data.existing_skills);
+                }
+
+            } catch (err) {
+                console.error("Skill Gap Backend Error:", err);
+                if (errorEl) { errorEl.textContent = (err && err.message ? err.message : "Failed to load skill gap analysis. Please check backend connectivity.") + " — see console for details."; errorEl.style.display = "block"; }
+                document.getElementById("gapLevel").textContent = "Unable to load";
+                document.getElementById("gapSummary").textContent = "Could not retrieve skill gap data. Please ensure backend is running and try again.";
+                document.getElementById("gapScore").innerHTML = '--<small>/100</small>';
+                document.getElementById("matchedSkillsList").innerHTML = `<div class="skill"><span class="skill-name">Error loading data</span><span class="priority">—</span></div>`;
+                document.getElementById("skillGapsList").innerHTML = `<div class="skill"><span class="skill-name">Error loading data</span><span class="priority">—</span></div>`;
+            } finally {
+                if (loadingEl) loadingEl.style.display = "none";
+            }
+        })();
+
+    </script>
+
+</body>
+
+</html>

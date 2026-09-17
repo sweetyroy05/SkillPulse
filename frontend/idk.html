@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Pulse - AI-Powered Skill Intelligence</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f9;
+            color: #222;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #061936;
+            color: white;
+
+            padding: 18px 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #20385c;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #dbe8f8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #159cf0;
+        }
+
+        nav a.active {
+            color: #159cf0;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 560px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #061936,
+                    #0b2b52,
+                    #09213e
+                );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 7%;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            border: 1px solid #397aa8;
+
+            border-radius: 20px;
+
+            color: #bde5ff;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 56px;
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .hero h2 span {
+            color: #159cf0;
+        }
+
+        .hero p {
+            color: #c5d5e8;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+
+            max-width: 620px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            background: #159cf0;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 15px 28px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            background: #48b5ff;
+
+            box-shadow:
+                0 10px 25px rgba(21, 156, 240, 0.3);
+        }
+
+        /* =========================
+           DECORATIVE GLOBE
+        ========================= */
+
+        .globe {
+            position: absolute;
+
+            right: 7%;
+            top: 90px;
+
+            width: 330px;
+            height: 330px;
+
+            border-radius: 50%;
+
+            border: 2px solid rgba(85, 190, 255, 0.55);
+
+            box-shadow:
+                0 0 40px rgba(21, 156, 240, 0.25),
+                inset 0 0 40px rgba(21, 156, 240, 0.12);
+
+            opacity: 0.9;
+        }
+
+        .globe::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 0;
+
+            width: 100px;
+            height: 100%;
+
+            transform: translateX(-50%);
+
+            border-left: 1px solid rgba(85, 190, 255, 0.35);
+            border-right: 1px solid rgba(85, 190, 255, 0.35);
+
+            border-radius: 50%;
+        }
+
+        .globe::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 50%;
+
+            width: 100%;
+            height: 100px;
+
+            transform: translateY(-50%);
+
+            border-top: 1px solid rgba(85, 190, 255, 0.35);
+            border-bottom: 1px solid rgba(85, 190, 255, 0.35);
+
+            border-radius: 50%;
+        }
+
+        .orbit {
+            position: absolute;
+
+            right: 1%;
+            top: 150px;
+
+            width: 460px;
+            height: 170px;
+
+            border: 1px solid rgba(85, 190, 255, 0.3);
+
+            border-radius: 50%;
+
+            transform: rotate(-20deg);
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            max-width: 1000px;
+
+            margin: 55px auto;
+
+            padding: 0 25px;
+
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: #0b1f3a;
+
+            font-size: 32px;
+
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            color: #5d6b7d;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        .dashboard {
+            max-width: 1100px;
+
+            margin: 0 auto 70px;
+
+            padding: 0 25px;
+        }
+
+        .dashboard-title {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .dashboard-title h2 {
+            color: #0b1f3a;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .dashboard-title p {
+            color: #718096;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 30px;
+
+            text-decoration: none;
+
+            border: 1px solid #dfe7f0;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.07);
+
+            transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-number {
+            color: #159cf0;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            color: #0b1f3a;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #64748b;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            color: #159cf0;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        /* Different card accents */
+
+        .card.skill {
+            border-top: 5px solid #159cf0;
+        }
+
+        .card.training {
+            border-top: 5px solid #18a999;
+        }
+
+        .card.geographic {
+            border-top: 5px solid #7c5cff;
+        }
+
+        .card.simulator {
+            border-top: 5px solid #f59e0b;
+        }
+
+        .card.profile {
+            border-top: 5px solid #e052a0;
+
+            grid-column: 1 / -1;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .how {
+            background: white;
+
+            padding: 60px 25px;
+
+            border-top: 1px solid #dfe7f0;
+
+            border-bottom: 1px solid #dfe7f0;
+        }
+
+        .how-inner {
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .how-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .how-title h2 {
+            color: #0b1f3a;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .how-title p {
+            color: #718096;
+        }
+
+        .steps {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .step {
+            text-align: center;
+
+            padding: 25px 15px;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #0b1f3a;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .step h3 {
+            color: #0b1f3a;
+
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #718096;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================
+           DATA NOTE
+        ========================= */
+
+        .note {
+            max-width: 850px;
+
+            margin: 50px auto;
+
+            padding: 0 25px;
+
+            text-align: center;
+
+            color: #718096;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #061936;
+
+            color: #b8c7da;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 18px;
+
+                text-align: center;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            .hero {
+                min-height: 600px;
+
+                padding: 55px 25px;
+            }
+
+            .hero h2 {
+                font-size: 42px;
+            }
+
+            .globe {
+                opacity: 0.25;
+
+                right: -100px;
+
+                top: 180px;
+            }
+
+            .orbit {
+                opacity: 0.2;
+
+                right: -150px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card.profile {
+                grid-column: auto;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>SKILL PULSE</h1>
+
+        <nav>
+
+            <a href="idk.html" class="active">
+                Home
+            </a>
+
+            <a href="skill-gap.html">
+                Skill Gap
+            </a>
+
+            <a href="training-impact.html">
+                Training Impact
+            </a>
+
+            <a href="geographic.html">
+                Geographic Intelligence
+            </a>
+
+            <a href="simulator.html">
+                Simulator
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                AI-POWERED SKILL INTELLIGENCE PLATFORM
+            </div>
+
+            <h2>
+                Understand Skills.
+                <br>
+                <span>Discover Opportunities.</span>
+            </h2>
+
+            <p>
+                Skill Pulse connects people, training,
+                employer demand and employment outcomes
+                to provide actionable skill intelligence.
+            </p>
+
+            <a
+                href="profile-analyzer.html"
+                class="hero-button"
+            >
+                Start Your Analysis →
+            </a>
+
+        </div>
+
+
+        <!-- Decorative globe -->
+
+        <div class="globe"></div>
+
+        <div class="orbit"></div>
+
+    </section>
+
+
+    <!-- =========================
+         INTRO
+    ========================= -->
+
+    <section class="intro">
+
+        <h2>
+            One Platform. Multiple Skill Insights.
+        </h2>
+
+        <p>
+            Explore skill gaps, training impact,
+            geographic demand and policy scenarios
+            through the Skill Pulse intelligence system.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================= -->
+
+    <section class="dashboard" id="dashboard">
+
+        <div class="dashboard-title">
+
+            <h2>
+                Skill Pulse Intelligence Modules
+            </h2>
+
+            <p>
+                Select a module to explore the platform.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- PROFILE -->
+
+            <a
+                href="profile-analyzer.html"
+                class="card profile"
+            >
+
+                <div class="card-number">
+                    01 • START HERE
+                </div>
+
+                <h3>
+                    Profile & Career Analyzer
+                </h3>
+
+                <p>
+                    Enter your location, qualification,
+                    profession and skills to build your
+                    Skill Pulse profile and begin the
+                    intelligence analysis.
+                </p>
+
+                <div class="card-button">
+                    Analyze My Profile →
+                </div>
+
+            </a>
+
+
+            <!-- SKILL GAP -->
+
+            <a
+                href="skill-gap.html"
+                class="card skill"
+            >
+
+                <div class="card-number">
+                    02 • SKILL INTELLIGENCE
+                </div>
+
+                <h3>
+                    Skill Gap Radar
+                </h3>
+
+                <p>
+                    Identify skills that are currently
+                    available and discover additional
+                    skills that may be needed in the
+                    employment market.
+                </p>
+
+                <div class="card-button">
+                    Explore Skill Gaps →
+                </div>
+
+            </a>
+
+
+            <!-- TRAINING -->
+
+            <a
+                href="training-impact.html"
+                class="card training"
+            >
+
+                <div class="card-number">
+                    03 • TRAINING
+                </div>
+
+                <h3>
+                    Training Impact Analyzer
+                </h3>
+
+                <p>
+                    Understand how training and skill
+                    development may align with employment
+                    opportunities and market requirements.
+                </p>
+
+                <div class="card-button">
+                    Analyze Training →
+                </div>
+
+            </a>
+
+
+            <!-- GEOGRAPHIC -->
+
+            <a
+                href="geographic.html"
+                class="card geographic"
+            >
+
+                <div class="card-number">
+                    04 • GEOGRAPHY
+                </div>
+
+                <h3>
+                    Geographic Skill Intelligence
+                </h3>
+
+                <p>
+                    Explore how skill demand and
+                    employment opportunities can vary
+                    across locations and sectors.
+                </p>
+
+                <div class="card-button">
+                    Explore Geography →
+                </div>
+
+            </a>
+
+
+            <!-- SIMULATOR -->
+
+            <a
+                href="simulator.html"
+                class="card simulator"
+            >
+
+                <div class="card-number">
+                    05 • POLICY
+                </div>
+
+                <h3>
+                    What-If Policy Simulator
+                </h3>
+
+                <p>
+                    Test hypothetical training scenarios
+                    and understand how changes in the
+                    skilled workforce could affect demand.
+                </p>
+
+                <div class="card-button">
+                    Run a Scenario →
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section class="how">
+
+        <div class="how-inner">
+
+            <div class="how-title">
+
+                <h2>
+                    How Skill Pulse Works
+                </h2>
+
+                <p>
+                    Connecting people, skills, training
+                    and employment intelligence.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h3>
+                        Build Profile
+                    </h3>
+
+                    <p>
+                        Enter education, profession,
+                        location and skills.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h3>
+                        Compare Skills
+                    </h3>
+
+                    <p>
+                        Identify gaps between existing
+                        skills and market requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h3>
+                        Understand Demand
+                    </h3>
+
+                    <p>
+                        Explore geographic and
+                        employment-related intelligence.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <h3>
+                        Take Action
+                    </h3>
+
+                    <p>
+                        Use insights to explore training
+                        and career development options.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NOTE
+    ========================= -->
+
+    <p class="note">
+
+        <strong>Prototype / Demo:</strong>
+        Skill Pulse is currently a frontend prototype.
+        Demonstration values shown in the modules are
+        not live government or employment data.
+
+        The final system can connect these modules
+        to backend datasets, calculations and
+        intelligence models.
+
+    </p>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <strong>Skill Pulse</strong>
+            — AI-Powered Skill Intelligence Platform
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

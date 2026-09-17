@@ -1,0 +1,44 @@
+{
+  "roles": [
+    {
+      "id": "ROLE-001",
+      "title": "Software Engineer",
+      "professions": ["Computer Science", "Information Technology", "Software Engineering"],
+      "core_skills": ["Python", "SQL", "Web Development"],
+      "secondary_skills": ["Cloud Computing", "Machine Learning"],
+      "description": "Designs, builds, and maintains robust software systems."
+    },
+    {
+      "id": "ROLE-002",
+      "title": "Data Analyst",
+      "professions": ["Computer Science", "Information Technology", "Statistics", "Mathematics", "Business Analytics"],
+      "core_skills": ["SQL", "Excel", "Data Analysis"],
+      "secondary_skills": ["Python", "Machine Learning"],
+      "description": "Analyzes raw data to discover operational insights and trends."
+    },
+    {
+      "id": "ROLE-003",
+      "title": "GIS Analyst",
+      "professions": ["Civil Engineering", "Geoinformatics", "Geography", "Surveying"],
+      "core_skills": ["GIS", "Surveying", "AutoCAD"],
+      "secondary_skills": ["Python", "Technical Drawing"],
+      "description": "Specializes in spatial analysis, mapping, and geospatial infrastructure data."
+    },
+    {
+      "id": "ROLE-004",
+      "title": "CAD Engineer / Draftsperson",
+      "professions": ["Civil Engineering", "Mechanical Engineering", "Architecture"],
+      "core_skills": ["AutoCAD", "Technical Drawing"],
+      "secondary_skills": ["GIS", "Project Management"],
+      "description": "Produces technical drawings and blueprints for structural projects."
+    },
+    {
+      "id": "ROLE-005",
+      "title": "AI / ML Engineer",
+      "professions": ["Computer Science", "Data Science", "Artificial Intelligence"],
+      "core_skills": ["Python", "Machine Learning", "SQL"],
+      "secondary_skills": ["Cloud Computing", "Data Analysis"],
+      "description": "Builds and deploys predictive models and intelligent algorithmic systems."
+    }
+  ]
+}

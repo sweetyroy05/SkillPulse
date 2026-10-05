@@ -6,6 +6,8 @@
 
 // Production: window.API_BASE_URL = ""  (enables same-origin /api/* calls)
 // Local development: window.API_BASE_URL = "http://127.0.0.1:8000"
+// Production — set to your real Render backend URL (no trailing slash)
+// Local development: revert to "http://127.0.0.1:8000"
 window.API_BASE_URL = "";
 
 // If API_BASE_URL is empty, use /api as base for same-origin calls.

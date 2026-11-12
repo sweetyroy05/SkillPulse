@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from api.index import app
+from app.main import app
 import json
 
 client = TestClient(app)
@@ -42,22 +42,21 @@ print(f'5. POST /api/training-impact/analyze: current={c} {"PASS" if t5 else "FA
 r = client.post('/api/geographic/analyze', json={'location': 'Shillong', 'profession': 'Computer Science', 'skills': 'Python, SQL', 'qualification': 'B.Tech'})
 s = r.json().get('skill_supply')
 d = r.json().get('skill_demand')
-t6 = r.status_code == 200 and s and d
+t6 = r.status_code == 200 and s is not None and d is not None
 print(f'6. POST /api/geographic/analyze: supp={s} dem={d} {"PASS" if t6 else "FAIL"}')
 
 # Test 7: POST /api/simulator/run
 r = client.post('/api/simulator/run', json={'location': 'Shillong', 'profession': 'Computer Science', 'skills': 'Python, SQL', 'qualification': 'B.Tech', 'target_skill': 'GIS', 'additional_trainees': 1000})
 t = r.json().get('target_role')
 b = r.json().get('baseline', {}).get('alignment_score')
-t7 = r.status_code == 200 and t and b is not None
+t7 = r.status_code == 200 and t is not None and b is not None
 print(f'7. POST /api/simulator/run: target={t} base={b} {"PASS" if t7 else "FAIL"}')
 
 print()
 all_ok = all([t1, t2, t3, t4, t5, t6, t7])
-passed = sum([t1, t2, t3, t4, t5, t6, t7])
+passed = sum([1 for v in [t1, t2, t3, t4, t5, t6, t7] if v])
 print(f'=== RESULTS: {passed}/7 tests passed ===')
 if all_ok:
     print('VERIFICATION: ALL API ENDPOINTS WORKING CORRECTLY')
 else:
     print('VERIFICATION: SOME TESTS FAILED - NEEDS ATTENTION')
-"

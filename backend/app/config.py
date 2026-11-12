@@ -39,8 +39,12 @@ class Settings:
         r"^http://(localhost|127\.0\.0\.1)(:[0-9]+)?$|^https://.*\.vercel\.app$",
     )
 
-    BASE_DIR: str = os.path.dirname(os.path.abspath(__file__))
-    DATA_DIR: str = os.path.join(BASE_DIR, "data")
+    # Data directory — overridable via env var for flexibility (e.g., Vercel serverless)
+    # Falls back to <BASE_DIR>/data relative to this config file
+    _base_dir: str = os.path.dirname(os.path.abspath(__file__))
+    DATA_DIR: str = os.getenv(
+        "DATA_DIR", os.path.join(_base_dir, "data")
+    ).strip()
 
     # ------------------------------------------------------------------
     # ONLINE DATA INTEGRATION — additive, defaults preserve LOCAL mode
@@ -67,12 +71,17 @@ class Settings:
     ONET_USERNAME: str = os.getenv("ONET_USERNAME", "").strip()
     ONET_PASSWORD: str = os.getenv("ONET_PASSWORD", "").strip()
 
-    # Simple file/TTL cache
-    CACHE_TTL_SECONDS: int = int(os.getenv("CACHE_TTL_SECONDS", "3600") or "3600")
-    # Default cache dir: <BASE_DIR>/../.cache ; override via CACHE_DIR
-    CACHE_DIR: str = os.getenv("CACHE_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".cache")).strip() or os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "..", ".cache"
-    )
+    # Cache TTL in seconds — in Vercel serverless, persistent file caching is
+    # not reliable across invocations. Set CACHE_TTL_SECONDS=0 to safely disable
+    # the file-based cache and avoid ephemeral filesystem issues.
+    _cache_ttl_str: str = os.getenv("CACHE_TTL_SECONDS", "0").strip()
+    CACHE_TTL_SECONDS: int = int(_cache_ttl_str) if _cache_ttl_str else 0
+    # Cache directory — overridable via env var; defaults to <base>/.cache
+    # In serverless environments this will typically be ephemeral, so CACHE_TTL_SECONDS=0
+    # is the safe default to prevent errors from missing persistency.
+    CACHE_DIR: str = os.getenv(
+        "CACHE_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".cache")
+    ).strip() or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".cache")
 
     # Extra origins for production (Vercel, custom domains) — comma-separated via env vars
     # Example: FRONTEND_URL=https://skill-pulse.vercel.app or CORS_EXTRA_ORIGINS=https://a.vercel.app,https://example.com

@@ -1,0 +1,14 @@
+{
+  "framework": "python",
+  "pythonVersion": "3.12",
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12"
+    }
+  },
+  "env": {
+    "DATA_SOURCE_MODE": "AUTO_FALLBACK",
+    "CACHE_TTL_SECONDS": "0",
+    "CORS_ORIGIN_REGEX": "^http://(localhost|127\\.0\\.0\\.1)(:[0-9]+)?$|^https://.*\\.vercel\\.app$"
+  }
+}

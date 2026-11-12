@@ -19,20 +19,16 @@ services:
     envVars:
       - key: DATA_SOURCE_MODE
         value: LOCAL
-        sync: false
       - key: FRONTEND_URL
         # Replace after you deploy frontend to Vercel, e.g., https://skill-pulse.vercel.app
         # This allows CORS for your production frontend
         value: https://YOUR-FRONTEND.vercel.app
-        sync: false
       # Optional: add CORS_EXTRA_ORIGINS if you have multiple frontends
       # - key: CORS_EXTRA_ORIGINS
       #   value: https://your-custom-domain.com
-      # Optional Jooble (leave blank for LOCAL mode)
+      # Optional Jooble — set this in Render dashboard as a secret (do NOT commit real key)
       - key: JOOBLE_API_KEY
-        sync: false
       - key: JOOBLE_BASE_URL
         value: https://jooble.org/api
-        sync: false
       # Python version — Render will use latest 3.11/3.12 if not pinned
     # No Dockerfile needed — Render uses native Python build

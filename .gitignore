@@ -1,7 +1,7 @@
-# SKILL PULSE — Root .gitignore
+# SKILL PULSE â€” Root .gitignore
 # Prevents secrets & generated files from being committed (critical for deployment)
 
-# Secrets — NEVER commit real keys
+# Secrets â€” NEVER commit real keys
 .env
 *.env
 !.env.example
@@ -34,3 +34,33 @@ frontend/node_modules/
 npm-debug.log*
 
 *.dist-info/
+backend/test_output.txt
+check_env.py
+test_path.py
+# Accidental third-party Python packages
+/annotated_doc/
+/annotated_types/
+/anyio/
+/certifi/
+/click/
+/dotenv/
+/h11/
+/httpcore/
+/httpx/
+/idna/
+/multipart/
+/opentelemetry/
+/python_multipart/
+/starlette/
+/typing_inspection/
+/uvicorn/
+/typing_extensions.py
+/bin/
+/.gitigate
+/.gitivate
+/.gitignore.bak
+/.gitignore.tmp
+/.temp
+/investigate_packages.py
+/repair.gitify.py
+/repair.py
